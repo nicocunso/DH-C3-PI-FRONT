@@ -1,0 +1,45 @@
+
+*{
+    box-sizing: border-box;
+}
+.h2{
+    font-size: 20px;
+    color: rgba(3, 68, 94, 1);
+    margin-left: 30px;
+    
+}
+
+.contenedor{
+    display: flex;
+    
+    margin-left: 15px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+.button{
+
+    margin-right: 20px;   
+    height: 10%; 
+    margin-top: 10px;
+    border: 1px solid black;
+    padding-bottom: 40px;
+    
+}
+
+.contenedor2{
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+span{
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+
+
+

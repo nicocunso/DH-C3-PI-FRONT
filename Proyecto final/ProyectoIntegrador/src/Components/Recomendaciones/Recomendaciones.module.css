@@ -1,0 +1,11 @@
+.h2{
+    font-size: 20px;
+    margin-left: 30px;
+    color: rgba(3, 68, 94, 1);
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
