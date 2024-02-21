@@ -5,7 +5,10 @@
     background-color: rgba(172, 192, 217, 0.5);
     height: 20vh;
     width: 100vw;
-    
+    margin-top: 10px;
+    margin-bottom: 10px
+  
+  
     
     
   }
@@ -26,7 +29,8 @@
     border-radius: 15px;
     width: 17vw;
     height: 4vh;
-
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(78, 74, 74, 0.856);
     
 
   }
@@ -38,8 +42,6 @@
     border-radius: 5px;
     color: black;
     border: 1px solid black;
-   
-    
 
 
   }

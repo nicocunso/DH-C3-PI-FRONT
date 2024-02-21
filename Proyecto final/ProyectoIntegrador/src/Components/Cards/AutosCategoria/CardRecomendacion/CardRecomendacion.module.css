@@ -15,12 +15,27 @@
     flex-direction: column;
     margin-left: 70px;
     margin-right: 70px;
-    
-    
+
+    padding: 20px;
+    margin-bottom: 60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+
+
 }
 
 h2, h3{
 
     margin-left: 30px;
+
+    font-size: 1.5em; 
+    text-align: center;
 }
 
+h3.anio {
+  margin-left: 5px; 
+}
+
+.img {
+  width: 30vw;
+  height: 40vh;
+}

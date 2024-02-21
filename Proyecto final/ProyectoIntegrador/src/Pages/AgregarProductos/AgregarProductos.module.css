@@ -41,3 +41,21 @@ input, select{
     margin-left: 10px;
     
 }
+
+.backButton {
+    position: absolute;
+    top: 7vh;
+    left: 5vw;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ffffff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .backIcon {
+    color: #03445E;
+  }

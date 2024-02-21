@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import AgregarProductosStyles from './AgregarProductos.module.css'
 
 const AgregarProducto = () => {
@@ -20,7 +22,10 @@ const AgregarProducto = () => {
 
   return (
     <div className={AgregarProductosStyles.container}>
-      <h2>Agregar Producto</h2>
+    <div className={AgregarProductosStyles.backButton} onClick={() => navigate('/')}>
+        <FontAwesomeIcon icon={faArrowLeft} className={AgregarProductosStyles.backIcon} />
+      </div>      
+    <h2>Agregar Producto</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Categoría del Vehículo:

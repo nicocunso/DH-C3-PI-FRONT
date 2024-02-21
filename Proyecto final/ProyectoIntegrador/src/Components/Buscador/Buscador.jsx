@@ -9,11 +9,12 @@ import ReactDatePicker from 'react-datepicker'
 const Buscador = () => {
   return (
     <div className={buscadorStyles.container}>
+      <br />
       <h2 className={buscadorStyles.h2}>Busca tu mejor opción</h2>
       <div className={buscadorStyles.otroContainer}>
           <div className= {buscadorStyles.input}>
             <img src={imglupa} alt="logo lupa" className={buscadorStyles.logo}/>
-            <input className={buscadorStyles.inputContainer} type="text" placeholder='Buscar auto'/>
+            <input className={buscadorStyles.inputContainer} type="text" placeholder='  Buscar auto'/>
           </div>
           <div className= {buscadorStyles.input}>
               <img src={imgcalendario} alt="logo calendario" className={buscadorStyles.logo}/>
