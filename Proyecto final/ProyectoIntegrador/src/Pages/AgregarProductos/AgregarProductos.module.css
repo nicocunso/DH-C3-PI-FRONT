@@ -7,14 +7,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     width: 90vw;
     background-color: rgb(244, 244, 244,);
     border-radius: 5px;
-    height: 90vh;
+    height: 100%;
     color: black;
     border: 1px solid black;
     margin-left: 70px;
     background-color: rgba(172, 192, 217, 0.5)
+    
     
     
 
@@ -23,8 +25,11 @@
 form{
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 50px;
     font-weight: bold;
+    height: 100%;
+    
+    
     
 }
 
@@ -59,3 +64,7 @@ input, select{
   .backIcon {
     color: #03445E;
   }
+
+  
+
+  

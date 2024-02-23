@@ -15,10 +15,10 @@ const Categorias = () => {
 
   return (
     <div>
-      <div className={categoriasStyle.contenedor2}>
-        <Link className={categoriasStyle.link} to= '/agregarproductos'><button className={categoriasStyle.button}> <span>+</span>Agregar Producto</button></Link>
+      
+        
         <h2 className={categoriasStyle.h2}>Categorias</h2>
-      </div>
+      
       <div className={categoriasStyle.contenedor}>
       {categorias.map(categoria => {
         return <AutosCategoria key={categoria.id} categoria={categoria}/>
