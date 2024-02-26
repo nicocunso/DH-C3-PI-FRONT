@@ -62,6 +62,23 @@ CREATE TABLE `autos` (
 
 # ================================================================================================
 
+DROP TABLE IF EXISTS `imagenes`;
+
+CREATE TABLE `imagenes` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_auto` BIGINT UNSIGNED NOT NULL,
+  `nombre` VARCHAR(50) DEFAULT NULL,
+  `tipo` VARCHAR(50) DEFAULT NULL,
+  `datos` MEDIUMBLOB NOT NULL,
+  `creado` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `actualizado` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `ix_autos_id_auto` (`id_auto`),
+  CONSTRAINT `autos_id_auto` FOREIGN KEY (`id_auto`) REFERENCES `autos` (`id`)
+);
+
+# ================================================================================================
+
 DROP TABLE IF EXISTS `clientes`;
 
 CREATE TABLE `clientes` (

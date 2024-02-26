@@ -59,4 +59,8 @@ public class Auto {
 
     @Column(name = "tipo_maleta")
     private String tipoMaleta;
+
+    @Column
+    @OneToMany(mappedBy = "auto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Imagen> imagenes;
 }
