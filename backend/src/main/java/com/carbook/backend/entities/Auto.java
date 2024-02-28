@@ -17,25 +17,19 @@ public class Auto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+/*
     @Column(name = "id_tipo_auto")
     private Long idTipoAuto;
-
+*/
     @Column
     private String matricula;
-
-    @Column
-    private String placa;
 
     @Column
     private String modelo;
 
     @Column
     private Integer anno;
-
-    @Column
-    private String color;
-
+/*
     @Column(name = "tipo_combustible")
     private String tipoCombustible;
 
@@ -55,11 +49,8 @@ public class Auto {
     private Integer numeroPuertas;
 
     @Column(name = "aire_acondicionado")
-    private Integer aireAcondicionado;
-
-    @Column(name = "tipo_maleta")
-    private String tipoMaleta;
-
+    private char aireAcondicionado;
+*/
     @Column
     @OneToMany(mappedBy = "auto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Imagen> imagenes;
