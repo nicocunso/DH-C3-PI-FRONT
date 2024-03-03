@@ -1,28 +1,18 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
-import { reducer } from "../Reducer/Reducer";
-import axios from "axios";
+import { createContext, useContext, useState } from "react";
+
+
 
 const VehiculosState = createContext()
 
-const initialState = {
-    list: []
-}
+
 
 const Context = ({children}) => {
-
-    const[state, dispatch] = useReducer(reducer, initialState)
-
-    const apiKey = ''
-    const url = '' 
     
 
-    useEffect(() =>{
-
-       
-    }, [])
+    
 
     return(
-        <VehiculosState.Provider value={{state, dispatch}}>
+        <VehiculosState.Provider value={{}}>
             {children}
         </VehiculosState.Provider>
     )
