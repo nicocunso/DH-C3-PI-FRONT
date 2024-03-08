@@ -7,31 +7,78 @@ import AgregarProductosStyles from './AgregarProductos.module.css';
 const AgregarProducto = () => {
   const navigate = useNavigate();
 
+  const [imagenes, setImagenes] = useState(undefined);
   const [vehiculo, setVehiculo] = useState({
-    id:'',
-    categoria: '',
-    marca: '',
-    modelo: '',
-    anioFabricacion: '',
-    imagenURL: '',
     matricula: '',
-    placa: '',
-    color: '',
+    modelo: '',
+    anno: '',
     tipoCombustible: '',
     kilometraje: '',
-    precioPorDia: '',
+    precioXDia: '',
     estado: '',
-    numPuertas: '',
-    aireAcondicionado: false,
-    tipoMaleta: '',
-    actualizado: '',
-    creadoPor: '',
-    actualizadoPor: '',
+    numeroPuertas: '',
+    aireAcondicionado: 0,
+    tipo: {
+      id: ''
+    }
   });
+
+  // Función para agregar imagenes
+  // async function agregarImagenes (e) {
+  //   let image = e.currentTarget.files[0];
+  //   const buffer = await image.arrayBuffer();
+  //   let byteArray = new Int8Array(buffer);
+  //   setImagenes(byteArray);
+    // const fileReader = new FileReader();
+    // const file = e.currentTarget.files[0];
+    // fileReader.readAsArrayBuffer(file);
+    // const fileByte = getAsByteArray(file);
+    // setImagenes(fileByte)
+    // const buffer = file.arrayBuffer();
+    // let byteArray = 
+    // fr.readAsArrayBuffer(file)
+    // fr.onload = function() {
+    //   // you can keep blob or save blob to another position
+    //   setImagenes(new Blob([fr.result]));
+
+    //   // url for download
+    //   // setImagenes(URL.createObjectURL(blob, {type: "image/png"}));
+    // }
+  // };
+
+  // Función para obtener los autos
+  const agregarVehiculo = (vehiculo) => {
+    // const formData = new FormData();
+
+    // // formData.append('imageFiles', imagenes);
+    // formData.append('auto', vehiculo);
+
+    // // Display the key/value pairs
+    // for (var pair of formData.entries()) {
+    //   console.log("-------------- formData ----------------");
+    //   console.log(pair[0]); 
+    //   console.log("-------------- formData ----------------");
+    //   console.log(pair[1]);
+    // }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(vehiculo),
+    };
+
+    console.log("body ------------------------");
+    console.log(options.body);
+
+    fetch('http://localhost:8080/autos', options);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Agrego vehiculo
+    agregarVehiculo(vehiculo);
     console.log('Datos enviados:', vehiculo);
     
     navigate('/admin');  
@@ -41,7 +88,12 @@ const AgregarProducto = () => {
     const { name, value, type, checked } = e.target;
     setVehiculo((prevVehiculo) => ({
       ...prevVehiculo,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]:
+        type === 'checkbox'
+          ? 1
+          : name === 'tipo'
+            ? { id: value }
+            : value
     }));
   };
 
@@ -54,22 +106,26 @@ const AgregarProducto = () => {
       <form onSubmit={handleSubmit}>
         <label>
           Categoría del Vehículo:
-          <select name="categoria" value={vehiculo.categoria} onChange={handleChange}>
-            <option value="">Selecciona una categoría</option>
-            <option value="auto">Auto</option>
-            <option value="suvs">SUVs</option>
+          <select name="tipo" onChange={handleChange}>
+            <option selected disabled>Selecciona una categoría</option>
+            <option value="1">Urbano</option>
+            <option value="2">Sedan</option>
+            <option value="3">Coupe</option>
+            <option value="4">Deportivo</option>
+            <option value="5">Todoterreno</option>
+            <option value="6">SUV</option>
           </select>
         </label>
-        <br />
+        {/* <br />
         <label>
           id :
           <input type="text" name="id" value={vehiculo.id} onChange={handleChange} />
-        </label>
-        <br />
+        </label> */}
+        {/* <br />
         <label>
           Marca :
           <input type="text" name="marca" value={vehiculo.marca} onChange={handleChange} />
-        </label>
+        </label> */}
         <br />
         <label>
           Modelo :
@@ -78,29 +134,36 @@ const AgregarProducto = () => {
         <br />
         <label>
           Año de Fabricación:
-          <input type="text" name="anioFabricacion" value={vehiculo.anioFabricacion} onChange={handleChange} />
+          <input type="text" name="anno" value={vehiculo.anno} onChange={handleChange} />
         </label>
-        <br />
-        <label>
-          URL de la Imagen:
-          <input type="text" name="imagenURL" value={vehiculo.imagenURL} onChange={handleChange} />
-        </label>
+        {/* <br />
+        <label for="imagenes">
+          Imagenes: */}
+          {/* <input type="text" name="imagenes" value={vehiculo.imagenes} onChange={handleChange} /> */}
+          {/* <input
+            type="file"
+            id="imagenes"
+            name="imagenes[]"
+            accept="image/png, image/jpeg"
+            multiple
+            onChange={agregarImagenes}/>
+        </label> */}
         <br />
         
         <label>
           Matrícula:
           <input type="text" name="matricula" value={vehiculo.matricula} onChange={handleChange} />
         </label>
-        <br />
+        {/* <br />
         <label>
           Placa:
           <input type="text" name="placa" value={vehiculo.placa} onChange={handleChange} />
-        </label>
-        <br />
+        </label> */}
+        {/* <br />
         <label>
           Color:
           <input type="text" name="color" value={vehiculo.color} onChange={handleChange} />
-        </label>
+        </label> */}
         <br />
         <label>
           Tipo de Combustible:
@@ -114,7 +177,7 @@ const AgregarProducto = () => {
         <br />
         <label>
           Precio por Día:
-          <input type="text" name="precioPorDia" value={vehiculo.precioPorDia} onChange={handleChange} />
+          <input type="text" name="precioXDia" value={vehiculo.precioXDia} onChange={handleChange} />
         </label>
         <br />
         <label>
@@ -124,24 +187,24 @@ const AgregarProducto = () => {
         <br />
         <label>
           Número de Puertas:
-          <input type="text" name="numPuertas" value={vehiculo.numPuertas} onChange={handleChange} />
+          <input type="text" name="numeroPuertas" value={vehiculo.numeroPuertas} onChange={handleChange} />
         </label>
         <br />
         <label>
           Aire Acondicionado:
           <input type="checkbox" name="aireAcondicionado" checked={vehiculo.aireAcondicionado} onChange={handleChange} />
         </label>
-        <br />
+        {/* <br />
         <label>
           Tipo de Maleta:
           <input type="text" name="tipoMaleta" value={vehiculo.tipoMaleta} onChange={handleChange} />
-        </label>
-        <br />
+        </label> */}
+        {/* <br />
         <label>
           Actualizado:
           <input type="text" name="actualizado" value={vehiculo.actualizado} onChange={handleChange} />
-        </label>
-        <br />
+        </label> */}
+        {/* <br />
         <label>
           Creado por:
           <input type="text" name="creadoPor" value={vehiculo.creadoPor} onChange={handleChange} />
@@ -150,7 +213,7 @@ const AgregarProducto = () => {
         <label>
           Actualizado por:
           <input type="text" name="actualizadoPor" value={vehiculo.actualizadoPor} onChange={handleChange} />
-        </label>
+        </label> */}
         <br />
         <button type="submit">Agregar Producto</button>
       </form>
