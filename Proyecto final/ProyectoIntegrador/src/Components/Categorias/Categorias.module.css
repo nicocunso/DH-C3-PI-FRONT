@@ -12,25 +12,21 @@
 
 .contenedor{
     display: flex;
-    
     margin-left: 15px;
     justify-content:space-around;
     flex-wrap: wrap;
-
+    gap: 15px;
 }
 
 .button{
-
     margin-right: 20px;   
     height: 10%; 
     margin-top: 10px;
     border: 1px solid black;
     padding-bottom: 40px;
-    
 }
 
 .contenedor2{
-
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;

@@ -4,11 +4,7 @@ import headerinicioStyles from './HeaderInicio.module.css'
 import { Link } from 'react-router-dom';
 
 
-
-
 const HeaderInicio = () => {
-
-    
 
     return (
         <div className={headerinicioStyles.header}>

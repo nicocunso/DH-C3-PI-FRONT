@@ -3,7 +3,6 @@
     box-sizing: border-box;
 }
 .img{
-
     width: 40vw;
     height: 50vh;
 }
@@ -15,18 +14,14 @@
     flex-direction: column;
     margin-left: 70px;
     margin-right: 70px;
-
     padding: 20px;
     margin-bottom: 60px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-
-
 }
 
 h2, h3{
-
+    color: #03445E;
     margin-left: 30px;
-
     font-size: 1.5em; 
     text-align: center;
 }
