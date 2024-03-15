@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import recomendacionesStyles from '../Recomendaciones/Recomendaciones.module.css';
+import React, {useState} from 'react'
+import recomendacionesStyles from '../Recomendaciones/Recomendaciones.module.css'
 import { CardRecomendacion } from '../Cards/AutosCategoria/CardRecomendacion/CardRecomendacion';
 import DetalleRecomendacion from '../DetalleRecomendacion/DetalleRecomendacion';
 
@@ -45,6 +45,7 @@ const Recomendaciones = () => {
   const toggleDetalle = (recomendacion) => {
     setRecomendacionSeleccionada(recomendacion);
     setMostrarDetalle(true);
+    console.log('Mostrar detalle:', mostrarDetalle);
   };
 
   const cerrarDetalle = () => {
@@ -52,27 +53,12 @@ const Recomendaciones = () => {
     setMostrarDetalle(false);
   };
 
-  // Lógica para paginar 
-  const indiceUltimaRecomendacion = paginaActual * recomendacionesPorPagina;
-  const indicePrimeraRecomendacion = indiceUltimaRecomendacion - recomendacionesPorPagina;
-  const recomendacionesActuales = recomendaciones.slice(indicePrimeraRecomendacion, indiceUltimaRecomendacion);
-
-  const handleClickSiguiente = () => {
-    setPaginaActual(paginaActual + 1);
-  };
-
-  const handleClickAtras = () => {
-    if (paginaActual > 1) {
-      setPaginaActual(paginaActual - 1);
-    }
-  };
-
   return (
     <div>
       <br />
       <h2 className={recomendacionesStyles.h2}>Recomendaciones</h2>
       <div className={recomendacionesStyles.container}>
-        {recomendacionesActuales.map((recomendacion) => (
+        {recomendaciones.map(recomendacion => (
           <CardRecomendacion
             key={recomendacion.id}
             recomendacion={recomendacion}
@@ -80,21 +66,14 @@ const Recomendaciones = () => {
           />
         ))}
       </div>
-
-      <div className={recomendacionesStyles.paginacion}>
-        <button onClick={handleClickAtras} disabled={paginaActual === 1}>
-          &#8249; 
-        </button>
-        <span>Página {paginaActual}</span>
-        <button onClick={handleClickSiguiente} disabled={indiceUltimaRecomendacion >= recomendaciones.length}>
-          &#8250; 
-        </button>
-      </div>  
       {mostrarDetalle && (
-        <DetalleRecomendacion recomendacion={recomendacionSeleccionada} onClose={cerrarDetalle} />
+        <DetalleRecomendacion
+          recomendacion={recomendacionSeleccionada}
+          onClose={cerrarDetalle}
+        />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Recomendaciones;
+export default Recomendaciones

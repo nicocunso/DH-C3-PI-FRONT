@@ -1,6 +1,7 @@
-import React from 'react'
-import imglogo from '../../assets/logo.png'
-import headerStyles from './Header.module.css'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import imglogo from '../../assets/logo.png';
+import headerStyles from './Header.module.css';
 import { Link, useLocation } from 'react-router-dom';
 
 const Header = ({ acceder = true }) => {
@@ -18,7 +19,9 @@ const Header = ({ acceder = true }) => {
 
     return (
         <div className={headerStyles.header}>
-            <img className={headerStyles.logo} src={imglogo} alt="Imagen logo"/>
+            <Link to="/" className={headerStyles.logoLink}>
+                <img className={headerStyles.logo} src={imglogo} alt="Imagen logo" />
+            </Link>
             <div className={headerStyles.lineaVertical}></div> 
             <p className={headerStyles.lema}>Explorá sin límites</p>
             { acceder && !user && <Link to= "/crearCuenta"><button>Crear Cuenta</button></Link> }
