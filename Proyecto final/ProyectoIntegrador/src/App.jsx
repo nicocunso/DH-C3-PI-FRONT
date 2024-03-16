@@ -4,7 +4,7 @@ import Body from './Components/Body/Body';
 import AgregarProducto from './Pages/AgregarProductos/AgregarProducto';
 import DetalleRecomendacion from './Components/DetalleRecomendacion/DetalleRecomendacion';
 import Header from './Components/Header/Header'; 
-import PanelAdmin from './Pages/AgregarProductos/panelAdmin/panelAdmin'
+import PanelAdmin from './Pages/AgregarProductos/panelAdmin/PanelAdmin'
 import CrearCuenta from './Pages/AgregarProductos/crearCuenta/CrearCuenta'
 import IniciarSesion from './Pages/AgregarProductos/iniciarSesion/IniciarSesion'
 import IniciarSesionAdmin from './Pages/AgregarProductos/IniciarSesionAdmin/IniciarSesionAdmin'
@@ -37,7 +37,6 @@ function App() {
         <Route path='/iniciarSesion' element= {<IniciarSesion/>}></Route>
         <Route path='/iniciarSesionAdmin' element= {<IniciarSesionAdmin/>}></Route>
         <Route path='/inicio' element = {<Bodito/>}></Route>
-        
       </Routes>
     </>
   );
