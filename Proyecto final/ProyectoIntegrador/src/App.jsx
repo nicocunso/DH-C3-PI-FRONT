@@ -28,7 +28,6 @@ function App() {
       <Header /> 
       <Routes>
         <Route path="/" element={<Body handleSeleccionarRecomendacion={handleSeleccionarRecomendacion} />} />
-        <Route path="/administración" element={<AgregarProducto />} />
         <Route path="/Detail/:id" element={<DetalleRecomendacion onClose={handleCloseDetalle} />} />
         <Route path='/' element={<Body/>}/>
         <Route path='/admin' element={<PanelAdmin/>}/>
