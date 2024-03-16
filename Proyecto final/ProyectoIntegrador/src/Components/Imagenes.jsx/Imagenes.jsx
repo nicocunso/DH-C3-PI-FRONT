@@ -8,7 +8,7 @@ import nissan2 from '../../assets/Nissan/nissan2.png';
 import nissan3 from '../../assets/Nissan/nissan3.png';
 import nissan4 from '../../assets/Nissan/nissan4.webp';
 import nissan5 from '../../assets/Nissan/nissan5.jpg';
-import civic from '../../assets/HondaCivic/civic.jpg';
+import civic from '../../assets/HondaCivic/Civic.jpg';
 import HCivic1 from '../../assets/HondaCivic/HCivic1.jpg';
 import HCivic2 from '../../assets/HondaCivic/HCivic2.jpg';
 import HCivic3 from '../../assets/HondaCivic/HCivic3.jpg';
