@@ -33,7 +33,6 @@ export const CardRecomendacion = ({ recomendacion, onVerDetalle }) => {
       })
       .then((blob) => {
         const data = URL.createObjectURL(blob);
-        console.log(data);
         if (imagenActual) {
           URL.revokeObjectURL(imagenActual)
         }

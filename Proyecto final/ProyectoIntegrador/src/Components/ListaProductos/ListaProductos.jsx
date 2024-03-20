@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import listaProductosStyle from './ListaProductos.module.css'
+import panelAdminStyles from '../../Pages/AgregarProductos/panelAdmin/PanelAdmin';
+import { Link } from 'react-router-dom';
 
 const ListaProductos = () => {
   const [productos, setProductos] = useState([]);
@@ -17,7 +19,6 @@ const ListaProductos = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setProductos(data);
       });
   }
@@ -29,7 +30,6 @@ const ListaProductos = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setProductos(data);
       });
   }
@@ -58,6 +58,10 @@ const ListaProductos = () => {
     }
   };
 
+  let redir = (productoId) => {
+    window.location.href = `/admin/actualizarProductos/${productoId}`;
+  }
+
   return (
     <div className={listaProductosStyle.container}>
       <h2>Lista de Productos</h2>
@@ -75,6 +79,9 @@ const ListaProductos = () => {
               <td>{producto.id}</td>
               <td>{producto.modelo}</td>
               <td>
+                {/* <Link to="/admin/actualizarProductos"> */}
+                  <button className={listaProductosStyle.eliminar} onClick={() => redir(producto.id)}>Actualizar</button>
+                {/* </Link> */}
                 <button className={listaProductosStyle.eliminar} onClick={() => handleEliminarProducto(producto.id)}>Eliminar</button>
               </td>
             </tr>

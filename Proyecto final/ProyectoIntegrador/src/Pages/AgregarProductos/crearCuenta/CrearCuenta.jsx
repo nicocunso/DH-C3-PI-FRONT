@@ -10,8 +10,20 @@ const Registro = () => {
     nombre: '',
     apellido: '',
     email: '',
-    contrasenia: '',
+    contrasena: '',
   });
+
+  const registrarUsuario = (usuario) => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(usuario),
+    };
+
+    fetch('http://localhost:8080/usuarios', options);
+  };
 
   const [errores, setErrores] = useState({});
   const navigate = useNavigate();
@@ -33,10 +45,10 @@ const Registro = () => {
       nuevosErrores.email = 'Formato de email inválido';
     }
 
-    if (!nuevoUsuario.contrasenia.trim()) {
-      nuevosErrores.contrasenia = 'La contraseña es obligatoria';
-    } else if (nuevoUsuario.contrasenia.length < 6) {
-      nuevosErrores.contrasenia = 'La contraseña debe tener al menos 6 caracteres';
+    if (!nuevoUsuario.contrasena.trim()) {
+      nuevosErrores.contrasena = 'La contraseña es obligatoria';
+    } else if (nuevoUsuario.contrasena.length < 6) {
+      nuevosErrores.contrasena = 'La contraseña debe tener al menos 6 caracteres';
     }
 
     setErrores(nuevosErrores);
@@ -48,12 +60,10 @@ const Registro = () => {
 
     if (validarFormulario()) {
       // Aquí puedes agregar la lógica para manejar los datos del formulario
+      registrarUsuario(nuevoUsuario);
       console.log('Datos del formulario:', nuevoUsuario);
       navigate('/');
     }
-
-    
-    
   };
 
   return (
@@ -83,10 +93,10 @@ const Registro = () => {
         <br />
         <label>
           Contraseña:
-          <input type="password" value={nuevoUsuario.contrasenia} onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, contrasenia: e.target.value })} />
+          <input type="password" value={nuevoUsuario.contrasena} onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, contrasena: e.target.value })} />
           
         </label>
-        {errores.contrasenia && <span style={{ marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.contrasenia}</span>}
+        {errores.contrasena && <span style={{ marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.contrasena}</span>}
         <br />
         <button className ={crearcuentastyles.button} type="submit">Registrarse</button>
       </form>

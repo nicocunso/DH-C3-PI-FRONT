@@ -25,7 +25,6 @@ const Recomendaciones = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setRecomendaciones(data);
       });
   }

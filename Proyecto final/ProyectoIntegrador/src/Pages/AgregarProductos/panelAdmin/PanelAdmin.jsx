@@ -3,23 +3,17 @@ import Header from '../../../Components/Header/Header';
 import panelAdminStyles from './PanelAdmin.module.css';
 import ListaProductos from '../../../Components/ListaProductos/ListaProductos';
 import Footer from '../../../Components/Footer/Footer';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PanelAdmin = () => {
   const [mostrarListaProductos, setMostrarListaProductos] = useState(false);
-  
-  
-
   const handleToggleListaProductos = () => {
     setMostrarListaProductos(!mostrarListaProductos);
   };
-  
-    
-  
 
   return (
     <div className={panelAdminStyles.padre}>
-      <Header mostrarbotones={false} dirigir={false} />
+      <Header acceder = {false} />
       <div className={panelAdminStyles.container}>
         <div className={panelAdminStyles.containernav}>
           <Link className={panelAdminStyles.link} to="/admin/agregarProductos">
@@ -29,13 +23,9 @@ const PanelAdmin = () => {
             Listar Productos
           </button>
         </div>
-
         {mostrarListaProductos && <ListaProductos />}
-
       </div>
-
       <Footer />
-
     </div>
   );
 };
