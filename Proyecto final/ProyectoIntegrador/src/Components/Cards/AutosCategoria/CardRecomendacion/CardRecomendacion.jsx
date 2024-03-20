@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import cardRecomendacionesStyles from './CardRecomendacion.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCarCrash, faWind, faDoorClosed, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import imagenes from '../../../Imagenes.jsx/Imagenes';
 
 export const CardRecomendacion = ({ recomendacion, onVerDetalle }) => {
   const [mostrarDetalle, setMostrarDetalle] = useState(false);
@@ -23,18 +24,21 @@ export const CardRecomendacion = ({ recomendacion, onVerDetalle }) => {
   };
 
   const obtenerImagen = (indiceImagen) => {
-    fetch(`http://localhost:8080/autos/${recomendacion.id}/imagenes/${recomendacion.imagenes[indiceImagen].id}`)
+    if (!recomendacion.imagenes[indiceImagen]) {
+      setImagenActual(imagenes[0]);
+    } else {
+      fetch(`http://localhost:8080/autos/${recomendacion.id}/imagenes/${recomendacion.imagenes[indiceImagen].id}`)
       .then((res) => {
         return res.blob();
       })
       .then((blob) => {
         const data = URL.createObjectURL(blob);
-        console.log(data);
         if (imagenActual) {
           URL.revokeObjectURL(imagenActual)
         }
         setImagenActual(data);
       });
+    }
   }
 
   return (
@@ -53,7 +57,7 @@ export const CardRecomendacion = ({ recomendacion, onVerDetalle }) => {
       <h3>{recomendacion.anno}</h3>
       {mostrarDetalle && (
         <div>
-          {/* <h3><FontAwesomeIcon icon={faUser} /> {recomendacion.personas}</h3> */}
+          <h3><FontAwesomeIcon icon={faUser} /> {recomendacion.cantidadPuertas}</h3>
           {/* <h3><FontAwesomeIcon icon={faCarCrash} /> {recomendacion.airbag}</h3> */}
           <h3><FontAwesomeIcon icon={faWind} /> {recomendacion.aireAcondicionado}</h3>
           {/* <h3><FontAwesomeIcon icon={faDoorClosed} /> {recomendacion.cierre}</h3> */}

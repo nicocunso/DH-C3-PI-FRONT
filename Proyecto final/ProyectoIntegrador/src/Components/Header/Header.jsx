@@ -1,24 +1,30 @@
 import React from 'react'
 import imglogo from '../../assets/logo.png'
 import headerStyles from './Header.module.css'
+import { Link, useLocation } from 'react-router-dom';
 
-console.log(headerStyles);
+const Header = ({ acceder = true }) => {
+    const user = localStorage.getItem('user');
+    const location = useLocation();
 
-const Header = () => {
-
-    const botones = ['Crear cuenta', 'Iniciar sesión']
+    function cerrarSesion() {
+        const redirect =
+            location.pathname.includes('admin')
+            ? '/admin/iniciarSesion'
+            : '/';
+        localStorage.removeItem('user');
+        window.location.href = redirect
+    };
 
     return (
         <div className={headerStyles.header}>
-            <img className={headerStyles.logo} src={imglogo} alt="Imagen logo" />
+            <img className={headerStyles.logo} src={imglogo} alt="Imagen logo"/>
             <div className={headerStyles.lineaVertical}></div> 
             <p className={headerStyles.lema}>Explorá sin límites</p>
-            <div className={headerStyles.botones}>
-                {botones.map((boton, index) => {
-                return <button key={index}>{boton}</button>
-                })}
+            { acceder && !user && <Link to= "/crearCuenta"><button>Crear Cuenta</button></Link> }
+            { acceder && !user && <Link to="/iniciarSesion"><button>Iniciar Sesión</button></Link> }
+            { user && <button onClick={() => cerrarSesion()}>Cerrar Sesion</button> }
             <div className={headerStyles.lineaHorizontal}></div> 
-            </div>
         </div>
     )
 }

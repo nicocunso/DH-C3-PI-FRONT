@@ -7,14 +7,13 @@ import { Link } from 'react-router-dom';
 
 const PanelAdmin = () => {
   const [mostrarListaProductos, setMostrarListaProductos] = useState(false);
-
   const handleToggleListaProductos = () => {
     setMostrarListaProductos(!mostrarListaProductos);
   };
 
   return (
     <div className={panelAdminStyles.padre}>
-      <Header />
+      <Header acceder = {false} />
       <div className={panelAdminStyles.container}>
         <div className={panelAdminStyles.containernav}>
           <Link className={panelAdminStyles.link} to="/admin/agregarProductos">
@@ -24,13 +23,9 @@ const PanelAdmin = () => {
             Listar Productos
           </button>
         </div>
-
         {mostrarListaProductos && <ListaProductos />}
-
       </div>
-
       <Footer />
-
     </div>
   );
 };

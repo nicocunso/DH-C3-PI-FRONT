@@ -1,20 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import listaProductosStyle from './ListaProductos.module.css'
+import panelAdminStyles from '../../Pages/AgregarProductos/panelAdmin/PanelAdmin';
+import { Link } from 'react-router-dom';
 
 const ListaProductos = () => {
-  const [productos, setProductos] = useState([
-    { id: 1, nombre: 'Toyota' },
-    { id: 2, nombre: 'Honda' },
-    { id: 3, nombre: 'Ford' },
-    { id: 4, nombre: 'Chevrolet' },
-    { id: 5, nombre: 'Volkswagen' },
-    { id: 6, nombre: 'BMW' },
-    { id: 7, nombre: 'Mercedes-Benz' },
-    { id: 8, nombre: 'Audi' },
-    { id: 9, nombre: 'Nissan' },
-    { id: 10, nombre: 'Hyundai' },
-    { id: 11, nombre: 'Hyundai' },
-  ]);
+  const [productos, setProductos] = useState([]);
+
+  // Hook al montar el componente
+  useEffect(() => {
+    // Efecto secundario para obtener los autos
+    obtenerProductos();
+  }, []);
+
+  // Función para obtener los autos
+  const obtenerProductos = () => {
+    fetch('http://localhost:8080/autos')
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setProductos(data);
+      });
+  }
+
+  // Función para eliminar los autos
+  const eliminarProductos = (id) => {
+    fetch(`http://localhost:8080/autos/${id}`, { method: 'DELETE' })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setProductos(data);
+      });
+  }
 
   const productosPorPagina = 6;
   const [paginaActual, setPaginaActual] = useState(1);
@@ -22,8 +40,7 @@ const ListaProductos = () => {
   const handleEliminarProducto = (id) => {
     const confirmacion = window.confirm('¿Estás seguro de que quieres eliminar este producto?');
     if (confirmacion) {
-      const nuevaListaProductos = productos.filter(producto => producto.id !== id);
-      setProductos(nuevaListaProductos);
+      eliminarProductos(id);
     }
   };
 
@@ -41,6 +58,10 @@ const ListaProductos = () => {
     }
   };
 
+  let redir = (productoId) => {
+    window.location.href = `/admin/actualizarProductos/${productoId}`;
+  }
+
   return (
     <div className={listaProductosStyle.container}>
       <h2>Lista de Productos</h2>
@@ -48,7 +69,7 @@ const ListaProductos = () => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Nombre</th>
+            <th>Modelo</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -56,8 +77,11 @@ const ListaProductos = () => {
           {productosActuales.map(producto => (
             <tr key={producto.id}>
               <td>{producto.id}</td>
-              <td>{producto.nombre}</td>
+              <td>{producto.modelo}</td>
               <td>
+                {/* <Link to="/admin/actualizarProductos"> */}
+                  <button className={listaProductosStyle.eliminar} onClick={() => redir(producto.id)}>Actualizar</button>
+                {/* </Link> */}
                 <button className={listaProductosStyle.eliminar} onClick={() => handleEliminarProducto(producto.id)}>Eliminar</button>
               </td>
             </tr>
