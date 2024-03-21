@@ -2,24 +2,23 @@ import React, { useState } from 'react';
 import Header from '../../../Components/Header/Header';
 import panelAdminStyles from './PanelAdmin.module.css';
 import ListaProductos from '../../../Components/ListaProductos/ListaProductos';
+import ListaUsuarios from '../../../Components/ListaUsuarios/ListaUsuarios';
 import Footer from '../../../Components/Footer/Footer';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PanelAdmin = () => {
   const [mostrarListaProductos, setMostrarListaProductos] = useState(false);
-  
-  
-
+  const [mostrarListaUsuarios, setMostrarListaUsuarios] = useState(false);
   const handleToggleListaProductos = () => {
     setMostrarListaProductos(!mostrarListaProductos);
   };
-  
-    
-  
+  const handleToggleListaUsuarios = () => {
+    setMostrarListaUsuarios(!mostrarListaUsuarios);
+  };
 
   return (
     <div className={panelAdminStyles.padre}>
-      <Header mostrarbotones={false} dirigir={false} />
+      <Header acceder = {false} />
       <div className={panelAdminStyles.container}>
         <div className={panelAdminStyles.containernav}>
           <Link className={panelAdminStyles.link} to="/admin/agregarProductos">
@@ -28,14 +27,14 @@ const PanelAdmin = () => {
           <button className={panelAdminStyles.button} onClick={handleToggleListaProductos}>
             Listar Productos
           </button>
+          <button className={panelAdminStyles.button} onClick={handleToggleListaUsuarios}>
+            Listar Usuarios
+          </button>
         </div>
-
-        {mostrarListaProductos && <ListaProductos />}
-
+        {mostrarListaProductos && !mostrarListaUsuarios && <ListaProductos />}
+        {mostrarListaUsuarios && !mostrarListaProductos && <ListaUsuarios />}
       </div>
-
       <Footer />
-
     </div>
   );
 };

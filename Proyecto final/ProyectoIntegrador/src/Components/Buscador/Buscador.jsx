@@ -5,7 +5,6 @@ import imgcalendario from '../../assets/calendario.png'
 import ReactDatePicker from 'react-datepicker' 
 
 
-
 const Buscador = () => {
   return (
     <div className={buscadorStyles.container}>

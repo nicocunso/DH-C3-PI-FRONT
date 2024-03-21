@@ -1,27 +1,29 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import AgregarProductosStyles from './AgregarProductos.module.css';
 
-const AgregarProducto = () => {
+const ActualizarProducto = () => {
   const navigate = useNavigate();
+  const params = useParams();
 
-  const [imagenes, setImagenes] = useState(undefined);
   const [vehiculo, setVehiculo] = useState({
-    matricula: '',
-    modelo: '',
-    anno: '',
-    tipoCombustible: '',
+    id: '',
     kilometraje: '',
     precioXDia: '',
     estado: '',
-    numeroPuertas: '',
     aireAcondicionado: 0,
     tipo: {
       id: ''
     }
   });
+
+  // Hook al montar el componente
+  useEffect(() => {
+    // Efecto secundario para obtener el auto
+    obtenerVehiculo(params.id);
+  }, []);
 
   // Función para agregar imagenes
   // async function agregarImagenes (e) {
@@ -47,30 +49,41 @@ const AgregarProducto = () => {
   // };
 
   // Función para obtener los autos
-  const agregarVehiculo = (vehiculo) => {
+  const obtenerVehiculo = (id) => {
+    fetch(`http://localhost:8080/autos/${id}`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      setVehiculo(data);
+    });
+  };
+
+  // Función para actualizar los autos
+  const actualizarVehiculo = (vehiculo) => {
     // const formData = new FormData();
 
-    // formData.append('imageFiles', imagenes);
+    // // formData.append('imageFiles', imagenes);
     // formData.append('auto', vehiculo);
 
     const options = {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'content-type': 'application/json'
       },
       body: JSON.stringify(vehiculo),
     };
 
-    fetch('http://localhost:8080/autos', options);
+    fetch(`http://localhost:8080/autos`, options);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Agrego vehiculo
-    agregarVehiculo(vehiculo);
+    actualizarVehiculo(vehiculo);
     console.log('Datos enviados:', vehiculo);
-    
-    navigate('/admin');  
+
+    navigate('/admin');
   };
 
   const handleChange = (e) => {
@@ -91,7 +104,7 @@ const AgregarProducto = () => {
       <div className={AgregarProductosStyles.backButton} onClick={() => navigate('/admin')}>
         <FontAwesomeIcon icon={faArrowLeft} className={AgregarProductosStyles.backIcon} />
       </div>
-      <h2>Agregar Producto</h2>
+      <h2>Actualizar Producto</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Categoría del Vehículo:
@@ -104,16 +117,6 @@ const AgregarProducto = () => {
             <option value="5">Todoterreno</option>
             <option value="6">SUV</option>
           </select>
-        </label>
-        <br />
-        <label>
-          Modelo :
-          <input type="text" name="modelo" value={vehiculo.modelo} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Año de Fabricación:
-          <input type="text" name="anno" value={vehiculo.anno} onChange={handleChange} />
         </label>
         {/* <br />
         <label for="imagenes">
@@ -129,16 +132,6 @@ const AgregarProducto = () => {
         </label> */}
         <br />
         <label>
-          Matrícula:
-          <input type="text" name="matricula" value={vehiculo.matricula} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Tipo de Combustible:
-          <input type="text" name="tipoCombustible" value={vehiculo.tipoCombustible} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
           Kilometraje:
           <input type="text" name="kilometraje" value={vehiculo.kilometraje} onChange={handleChange} />
         </label>
@@ -150,12 +143,11 @@ const AgregarProducto = () => {
         <br />
         <label>
           Estado:
-          <input type="text" name="estado" value={vehiculo.estado} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Número de Puertas:
-          <input type="text" name="numeroPuertas" value={vehiculo.numeroPuertas} onChange={handleChange} />
+          <select name="estado" onChange={handleChange}>
+            <option selected disabled>Selecciona una categoría</option>
+            <option value="activo">Activo</option>
+            <option value="inactivo">Inactivo</option>
+          </select>
         </label>
         <br />
         <label>
@@ -163,7 +155,7 @@ const AgregarProducto = () => {
           <input type="checkbox" name="aireAcondicionado" checked={vehiculo.aireAcondicionado} onChange={handleChange} />
         </label>
         <br />
-        <button type="submit">Agregar Producto</button>
+        <button type="submit">Actualizar Producto</button>
       </form>
 
       
@@ -171,4 +163,4 @@ const AgregarProducto = () => {
   );
 };
 
-export default AgregarProducto;
+export default ActualizarProducto;
