@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import Header from '../../../Components/Header/Header';
 import panelAdminStyles from './PanelAdmin.module.css';
 import ListaProductos from '../../../Components/ListaProductos/ListaProductos';
+import ListaUsuarios from '../../../Components/ListaUsuarios/ListaUsuarios';
 import Footer from '../../../Components/Footer/Footer';
 import { Link } from 'react-router-dom';
 
 const PanelAdmin = () => {
   const [mostrarListaProductos, setMostrarListaProductos] = useState(false);
+  const [mostrarListaUsuarios, setMostrarListaUsuarios] = useState(false);
   const handleToggleListaProductos = () => {
     setMostrarListaProductos(!mostrarListaProductos);
+  };
+  const handleToggleListaUsuarios = () => {
+    setMostrarListaUsuarios(!mostrarListaUsuarios);
   };
 
   return (
@@ -22,8 +27,12 @@ const PanelAdmin = () => {
           <button className={panelAdminStyles.button} onClick={handleToggleListaProductos}>
             Listar Productos
           </button>
+          <button className={panelAdminStyles.button} onClick={handleToggleListaUsuarios}>
+            Listar Usuarios
+          </button>
         </div>
-        {mostrarListaProductos && <ListaProductos />}
+        {mostrarListaProductos && !mostrarListaUsuarios && <ListaProductos />}
+        {mostrarListaUsuarios && !mostrarListaProductos && <ListaUsuarios />}
       </div>
       <Footer />
     </div>
