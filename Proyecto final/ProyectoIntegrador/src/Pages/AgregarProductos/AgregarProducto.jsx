@@ -50,7 +50,7 @@ const AgregarProducto = () => {
   const agregarVehiculo = (vehiculo) => {
     // const formData = new FormData();
 
-    // // formData.append('imageFiles', imagenes);
+    // formData.append('imageFiles', imagenes);
     // formData.append('auto', vehiculo);
 
     const options = {

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Body from './Components/Body/Body';
-import AgregarProducto from './Pages/AgregarProductos/AgregarProducto';
 import DetalleRecomendacion from './Components/DetalleRecomendacion/DetalleRecomendacion';
 import Header from './Components/Header/Header'; 
 import PanelAdmin from './Pages/AgregarProductos/panelAdmin/panelAdmin'
-import AgregarProducto from './Pages/AgregarProductos/AgregarProducto'
+import AgregarProducto from './Pages/AgregarProductos/AgregarProducto';
 import ActualizarProducto from './Pages/AgregarProductos/ActualizarProducto'
 import CrearCuenta from './Pages/AgregarProductos/crearCuenta/CrearCuenta'
 import IniciarSesion from './Pages/AgregarProductos/iniciarSesion/IniciarSesion'
@@ -25,7 +24,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header acceder = {false} />
       <Routes>
         <Route path="/" element={<Body handleSeleccionarRecomendacion={handleSeleccionarRecomendacion} />} />
         <Route path="/administración" element={<AgregarProducto />} />

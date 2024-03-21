@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import recomendacionesStyles from '../Recomendaciones/Recomendaciones.module.css'
 import { CardRecomendacion } from '../Cards/AutosCategoria/CardRecomendacion/CardRecomendacion';
 import DetalleRecomendacion from '../DetalleRecomendacion/DetalleRecomendacion';
