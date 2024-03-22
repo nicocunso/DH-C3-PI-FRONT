@@ -10,15 +10,12 @@ const Recomendaciones = () => {
   const [paginaActual, setPaginaActual] = useState(1);
   const recomendacionesPorPagina = 10;
 
-  // Hook al montar el componente
+  
   useEffect(() => {
-    // Efecto secundario para obtener los autos
     obtenerRecomendaciones();
-    // Efecto secundario para barajar las recomendaciones
     barajarRecomendaciones();
   }, []);
 
-  // Función para obtener los autos
   const obtenerRecomendaciones = () => {
     fetch('http://localhost:8080/autos')
       .then((res) => {
@@ -29,7 +26,6 @@ const Recomendaciones = () => {
       });
   }
 
-  // Función para barajar las recomendaciones de forma aleatoria
   const barajarRecomendaciones = () => {
     const recomendacionesBarajadas = [...recomendaciones];
     for (let i = recomendacionesBarajadas.length - 1; i > 0; i--) {
