@@ -148,3 +148,23 @@
     width: 300px; 
     height: auto; 
 }
+
+.calendarsWrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.calendarContainer {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.available-date {
+    background-color: green; /* Color para fechas disponibles */
+  }
+  
+  .unavailable-date {
+    background-color: red; /* Color para fechas no disponibles */
+  }

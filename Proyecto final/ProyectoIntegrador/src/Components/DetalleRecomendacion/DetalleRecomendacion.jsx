@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,6 +12,8 @@ import {
   faKey,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./DetalleRecomendacion.module.css";
+import '@natscale/react-calendar/dist/main.css';
+import { Calendar } from '@natscale/react-calendar'; 
 
 import toyota from "../../assets/toyotacorolla.jpg";
 import Toyota1 from "../../assets/ToyotaCorolla/Toyota1.png";
@@ -192,7 +194,22 @@ const DetalleRecomendacion = ({ recomendacion, onClose }) => {
   const recomendacionActual = recomendaciones.find(
     (rec) => rec.id.toString() === Params.id
   );
+  
 
+
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate2, setSelectedDate2] = useState(null); 
+
+  const handleDateChange = useCallback((date) => {
+    setSelectedDate(date);
+  }, []);
+
+  const handleDateChange2 = useCallback((date) => {
+    setSelectedDate2(date);
+  }, []);
+
+
+  
   return (
     <div className={styles.container}>
       
@@ -299,6 +316,27 @@ const DetalleRecomendacion = ({ recomendacion, onClose }) => {
             </h2>
           </div>
         </div>
+      </div>
+      <div>
+      <h3>Reservas</h3>
+      <div className={styles.calendarContainer}>
+        <div className={styles.calendarWrapper}>
+          <h3>Desde</h3>
+          <Calendar
+            value={selectedDate}
+            onChange={handleDateChange}
+          />
+        </div>
+        <div className={styles.calendarWrapper}>
+          <h3>Hasta</h3>
+          <Calendar
+            value={selectedDate2}
+            onChange={handleDateChange2}
+          />
+        </div>
+        </div>
+        <br />
+        <br />
       </div>
     </div>
   );
