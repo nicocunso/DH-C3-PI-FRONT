@@ -87,9 +87,11 @@ const AgregarProducto = () => {
   };
 
   return (
+    
     <div className={AgregarProductosStyles.container}>
+
       <div className={AgregarProductosStyles.backButton} onClick={() => navigate('/admin')}>
-        <FontAwesomeIcon icon={faArrowLeft} className={AgregarProductosStyles.backIcon} />
+        <button>Atras</button>
       </div>
       <h2>Agregar Producto</h2>
       <form onSubmit={handleSubmit}>
