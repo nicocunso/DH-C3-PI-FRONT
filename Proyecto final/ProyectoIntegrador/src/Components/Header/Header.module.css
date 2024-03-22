@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px; 
+    padding: 20px; 
     background-color: #f0f0f0;
     position: fixed; 
     top: 0; 
@@ -17,6 +17,14 @@
     height: 80%;
 }
 
+.logoLink {
+    display: flex;
+}
+
+.login button {
+    margin: 10px;
+}
+
 @media screen and (max-width: 768px) {
     .logo {
         display: none;
@@ -27,7 +35,7 @@
 }
 
 .lineaVertical {
-    width: 2px; 
+    width: 2px;
     height: 65%; 
     background-color: #03445E; 
     margin-left: 2px;

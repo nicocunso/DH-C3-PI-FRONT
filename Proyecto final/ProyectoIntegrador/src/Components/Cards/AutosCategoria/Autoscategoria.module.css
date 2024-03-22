@@ -1,16 +1,11 @@
 .contenedor{
     border-radius: 10px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    min-width: 10%;
 }
 
 .h3{
     color: rgba(3, 68, 94, 1);
-    margin-left: 15px;
-}
-
-.h4{
-    color: rgba(106, 110, 112, 1);
-    margin-left: 15px;
-    font-size: 12px;
-    font-weight: lighter;
+    font-size: medium;
+    text-align: center;
 }

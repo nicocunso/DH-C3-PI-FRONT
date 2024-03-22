@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      <Header acceder = {false} />
+      <Header/>
       <Routes>
         <Route path="/" element={<Body handleSeleccionarRecomendacion={handleSeleccionarRecomendacion} />} />
         <Route path="/administración" element={<AgregarProducto />} />

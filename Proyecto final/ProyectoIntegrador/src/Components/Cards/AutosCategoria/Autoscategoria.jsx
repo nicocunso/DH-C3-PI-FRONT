@@ -1,12 +1,13 @@
 import React from 'react';
-import autocategoriaStyle from './Autoscategoria.module.css'
+import autocategoriaStyle from './Autoscategoria.module.css';
+import { Link } from 'react-router-dom';
 
 const AutosCategoria = ({ categoria }) => {
   return (
     <div className={autocategoriaStyle.contenedor}>
-      <img src={categoria.img} alt="" />
-      <h3 className={autocategoriaStyle.h3}>{categoria.tipo}</h3>
-      <h4 className={autocategoriaStyle.h4}>{categoria.texto}</h4>
+      <Link to={`/categorias/${categoria.id}/autos`}>
+        <h3 className={autocategoriaStyle.h3}>{categoria.tipo_auto}</h3>
+      </Link>
     </div>
   );
 };

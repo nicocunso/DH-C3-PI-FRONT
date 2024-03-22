@@ -42,7 +42,7 @@ export const CardRecomendacion = ({ recomendacion, onVerDetalle }) => {
       <div className={cardRecomendacionesStyles.container}>
         {/* <h2>{recomendacion.marca}</h2> */}
         <div className={cardRecomendacionesStyles.imageContainer}>
-          <img className={cardRecomendacionesStyles.img} src={imagenActual} alt="" style={{ marginLeft: '10px' }} />
+          <img className={cardRecomendacionesStyles.img} src={imagenActual} alt="" style={{ marginLeft: '10px' }}/>
           <FontAwesomeIcon
             className={cardRecomendacionesStyles.arrowRight}
             icon={faChevronRight}
@@ -51,7 +51,6 @@ export const CardRecomendacion = ({ recomendacion, onVerDetalle }) => {
         </div>
         <div className={cardRecomendacionesStyles.cardDetails}>
           <h3>{recomendacion.modelo}</h3>
-          <h3>{recomendacion.anno}</h3>
           <Link to={`/Detail/${recomendacion.id}`} className={cardRecomendacionesStyles.link}>
             <button>Ver Detalle</button>
           </Link>

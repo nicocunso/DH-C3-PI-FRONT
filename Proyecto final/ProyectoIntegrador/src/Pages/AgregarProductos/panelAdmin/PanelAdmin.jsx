@@ -18,7 +18,7 @@ const PanelAdmin = () => {
 
   return (
     <div className={panelAdminStyles.padre}>
-      <Header acceder = {false} />
+      <Header/>
       <div className={panelAdminStyles.container}>
         <div className={panelAdminStyles.containernav}>
           <Link className={panelAdminStyles.link} to="/admin/agregarProductos">

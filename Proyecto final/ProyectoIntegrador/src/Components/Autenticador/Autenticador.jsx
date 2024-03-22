@@ -13,10 +13,18 @@ const Autenticador = ({ children }) => {
       role === 'ROLE_ADMIN'
         ? '/admin/iniciarSesion'
         : '/iniciarSesion';
+
+    function redir() {
+      if (user) {
+        localStorage.removeItem('user');
+      }
+
+      return <Navigate to={redirect} replace />;
+    };
   
     return user && user.rol === role
       ? children
-      : <Navigate to={redirect} replace />;
+      : redir();
 }
 
 export default Autenticador;

@@ -1,15 +1,18 @@
 import React from 'react';
 import categoriasStyle from './Categorias.module.css';
-import imgauto from '../../assets/Auto.png';
-import imgsuv from '../../assets/Suv.png';
 import AutosCategoria from '../Cards/AutosCategoria/Autoscategoria'
 
 
 const Categorias = () => {
   let categorias = [
-    { id: 1, tipo: 'Autos', img: imgauto, texto: 'Mas información' },
-    { id: 2, tipo: 'SUVs', img: imgsuv, texto: 'Mas información' },
-    
+    { id: 1, tipo_auto: 'URBANO' },
+    { id: 2, tipo_auto: 'SEDAN' },
+    { id: 3, tipo_auto: 'COUPE' },
+    { id: 4, tipo_auto: 'DEPORTIVO' },
+    { id: 5, tipo_auto: 'TODOTERRENO' },
+    { id: 6, tipo_auto: 'SUV' },
+    { id: 7, tipo_auto: 'PICKUP' },
+    { id: 8, tipo_auto: 'FURGONETA' }
   ];
 
   return (
