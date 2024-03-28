@@ -198,7 +198,7 @@ const DetalleRecomendacion = ({ recomendacion, onClose }) => {
       
       <div className={styles.buttonContainer}>
       <Link to="/">
-        <button>Volver</button>
+        <button className={styles.botondetalle}>Volver</button>
       </Link>
     </div>
       <div className={styles.titulo}>
@@ -206,11 +206,14 @@ const DetalleRecomendacion = ({ recomendacion, onClose }) => {
         <h2>{recomendaciones[Params.id - 1].modelo}</h2>
       </div>
       <div className={styles.imagenesWrapper}>
-        <img
+        <div className={styles.divauto}>
+        <img 
           src={recomendacionActual.imagen[0]}
           alt="Primera Imagen"
           className={styles.primerImagen}
         />
+        </div>
+        <div className={styles.cuadricula}>
         <div className={styles.imagenGridTop}>
   {recomendacionActual.imagen.slice(1, 3).map((imagen, index) => (
     <img
@@ -231,11 +234,12 @@ const DetalleRecomendacion = ({ recomendacion, onClose }) => {
     />
   ))}
 </div>
+</div>
       </div>
       <div className={styles.contentWrapper}>
         <div className={styles.descriptionColumn}>
           <div className={styles.info}>
-            <h3>Descripción</h3>
+            <h3 className={styles.h3}>Descripción</h3>
             <p className={styles.texto}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -252,7 +256,7 @@ const DetalleRecomendacion = ({ recomendacion, onClose }) => {
             </div>
             <br />
             <div className={styles.botonAlquilar}>
-              <button>Alquilar ahora</button>
+              <button className={styles.botondetalle}>Alquilar</button>
             </div>
           </div>
           <br />
@@ -260,7 +264,7 @@ const DetalleRecomendacion = ({ recomendacion, onClose }) => {
         <div className={styles.infoColumn}>
           <br />
           <div>
-            <h3>Características</h3>
+            <h3 className={styles.h3}>Características</h3>
           </div>
           <div className={styles.infoBox}>
             <div className={styles.iconContainer}>

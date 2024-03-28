@@ -53,10 +53,10 @@ const IniciarSesion = () => {
 
   return (
     <div className={iniciarsesionstyles.container}>
-      <h2>Iniciar Sesión</h2>
+      <h5>Iniciar Sesión</h5>
       <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
         <label>
-          Email:
+          <h3>Email</h3>
           <input
             type="email"
             value={credenciales.email}
@@ -65,7 +65,7 @@ const IniciarSesion = () => {
         </label>
         <br />
         <label>
-          Contraseña:
+          <h3>Contraseña</h3>
           <input
             type="password"
             value={credenciales.contrasena}
@@ -73,7 +73,7 @@ const IniciarSesion = () => {
           />
         </label>
         <br />
-        <button className={iniciarsesionstyles.button} type="submit">Iniciar Sesión</button>
+        <button className={iniciarsesionstyles.buttoniden} type="submit">Iniciar Sesión</button>
       </form>
       {error && <p style={{ textAlign:'center', color: 'red' }}>{error}</p>}
     </div>

@@ -17,7 +17,7 @@ const Buscador = ({ onBuscar, onEnterPress }) => {
 
   return (
     <div className={buscadorStyles.container}>
-      <br />
+      
       <h2 className={buscadorStyles.h2}>Busca tu mejor opción</h2>
       <div className={buscadorStyles.otroContainer}>
         <div className={buscadorStyles.input}>

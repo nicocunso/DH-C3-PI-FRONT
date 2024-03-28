@@ -68,37 +68,37 @@ const Registro = () => {
 
   return (
     <div className={crearcuentastyles.container}>
-      <h2>Registro</h2>
+      <h5>Registro de Usuario</h5>
       <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
         <label>
-          Nombre:
+          <h3>Nombre</h3>
           <input type="text" value={nuevoUsuario.nombre} onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, nombre: e.target.value })} />
           
         </label>
         {errores.nombre && <span style={{marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.nombre}</span>}
         <br />
         <label>
-          Apellido:
+        <h3>Apellido</h3>
           <input type="text" value={nuevoUsuario.apellido} onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, apellido: e.target.value })} />
           
         </label>
         {errores.apellido && <span style={{marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.apellido}</span>}
         <br />
         <label>
-          Email:
+        <h3>Email</h3>
           <input type="email" value={nuevoUsuario.email} onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, email: e.target.value })} />
           
         </label>
         {errores.email && <span style={{marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.email}</span>}
         <br />
         <label>
-          Contraseña:
+        <h3>Contraseña</h3>
           <input type="password" value={nuevoUsuario.contrasena} onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, contrasena: e.target.value })} />
           
         </label>
         {errores.contrasena && <span style={{ marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.contrasena}</span>}
         <br />
-        <button className ={crearcuentastyles.button} type="submit">Registrarse</button>
+        <button className ={crearcuentastyles.buttoniden} type="submit">Registrarse</button>
       </form>
     </div>
   );

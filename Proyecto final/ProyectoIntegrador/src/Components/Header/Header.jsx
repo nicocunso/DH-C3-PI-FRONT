@@ -18,15 +18,19 @@ const Header = ({ acceder = true }) => {
 
     return (
         <div className={headerStyles.header}>
+            <div className={headerStyles.divlogo}>
             <Link to="/" className={headerStyles.logoLink}>
                 <img className={headerStyles.logo} src={imglogo} alt="Imagen logo" />
             </Link>
-            <div className={headerStyles.lineaVertical}></div> 
+            
             <p className={headerStyles.lema}>Explorá sin límites</p>
-            { acceder && !user && <Link to= "/crearCuenta"><button>Crear Cuenta</button></Link> }
-            { acceder && !user && <Link to="/iniciarSesion"><button>Iniciar Sesión</button></Link> }
+            </div>
+            <div className={headerStyles.botonesdiv}>
+            { acceder && !user && <Link to= "/crearCuenta"><button className={headerStyles.buttonh}>Crear Cuenta</button></Link> }
+            { acceder && !user && <Link to="/iniciarSesion"><button className={headerStyles.buttonh}>Iniciar Sesión</button></Link> }
             { user && <button onClick={() => cerrarSesion()}>Cerrar Sesion</button> }
-            <div className={headerStyles.lineaHorizontal}></div> 
+            </div>
+            
         </div>
     )
 }

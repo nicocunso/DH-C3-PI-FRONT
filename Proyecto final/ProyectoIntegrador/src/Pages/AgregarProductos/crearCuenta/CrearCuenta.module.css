@@ -6,7 +6,53 @@
     
 }
 
-.button{
+.buttoniden{
     border: 1px solid black;
     border-color: black;
 }
+
+form{
+    width: 50%;
+}
+
+input{
+    width: 20vw;
+}
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    
+    h3{
+        font-size: 25px;
+    }
+    h5{
+        font-size: 35px;
+    }
+
+    .buttoniden{
+        font-size: 25px;
+        margin-top: 30px;
+        width: 80%;
+        margin-left: 50px;
+    }
+  }
+
+  @media screen and (min-width: 390px) and (max-width: 844px){
+
+    form{
+        width: 90vw;
+    }
+
+    input{
+
+        width: 70%;
+        
+    }
+
+    .buttoniden{
+        width: 50%;
+        margin-left: 90px;
+        
+    }
+
+   
+
+  }

@@ -53,7 +53,7 @@
             <h3>{recomendacion.modelo}</h3>
             <h3>{recomendacion.anno}</h3>
             <Link to={`/Detail/${recomendacion.id}`} className={cardRecomendacionesStyles.link}>
-              <button>Ver Detalle</button>
+              <button className={cardRecomendacionesStyles.buttoncard}>Ver Detalle</button>
             </Link>
           </div>
         </div>

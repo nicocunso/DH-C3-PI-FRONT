@@ -49,3 +49,81 @@
     transform: scale(2); /* Ajusta el tamaño del icono según tus necesidades */
     margin-right: 10px;
   }
+
+  @media screen and (min-width: 1024px) and (max-width: 1366px) {
+    
+   .container{
+      height: 20vh;
+   }
+
+   .otroContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    align-items: center;
+  }
+
+  .button {
+    color: rgba(166, 153, 153, 0.856);
+    border-radius: 5px;
+    color: black;
+    border: 1px solid black;
+    width: 15%;
+    font-size: 20px;
+  }
+   
+  .logo{
+    
+    width: 50px;
+    
+  }
+
+  .inputContainer{
+    width: 240px;
+    font-size: 20px;
+    text-align: left;
+    height: 50px;
+  
+  }
+
+  .h2{
+
+    font-size: 27px;
+  }
+  
+
+  }
+
+  @media screen and (min-width: 390px) and (max-width: 844px) {
+
+    .container{
+      display: flex;
+      flex-direction: column;
+      height: 50vh;
+      
+    }
+
+    .otroContainer{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 40%;
+      width: 80%;
+    }
+
+    .inputContainer{
+
+      width: 200px;
+    }
+
+    .logo{
+
+      height: 30px;
+      width: 30px;
+    }
+
+    h2{
+      margin-bottom: 40px;
+    }
+
+  }
