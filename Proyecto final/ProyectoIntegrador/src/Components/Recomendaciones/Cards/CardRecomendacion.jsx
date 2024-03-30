@@ -1,17 +1,19 @@
-  import React, { useState, useEffect } from 'react';
-  import { Link } from 'react-router-dom';
-  import cardRecomendacionesStyles from './CardRecomendacion.module.css';
-  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-  import { faUser, faCarCrash, faWind, faDoorClosed, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-  import imagenes from '../../../Imagenes.jsx/Imagenes';
 
-  export const CardRecomendacion = ({ recomendacion, onVerDetalle }) => {
-    const [indiceImagen, setIndiceImagen] = useState(0);
-    const [imagenActual, setImagenActual] = useState(undefined);
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import cardRecomendacionesStyles from './CardRecomendacion.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import imagenes from '../../Imagenes.jsx/Imagenes';
+import { baseURL } from '../../../config/config';
 
-    useEffect(() => {
-      obtenerImagen(indiceImagen);
-    }, []);
+export const CardRecomendacion = ({ recomendacion }) => {
+  const [indiceImagen, setIndiceImagen] = useState(0);
+  const [imagenActual, setImagenActual] = useState(undefined);
+
+  useEffect(() => {
+    obtenerImagen(indiceImagen);
+  }, []);
 
     const cambiarImagen = (indice) => {
       const newIndice = (indice + recomendacion.imagenes.length) % recomendacion.imagenes.length;
@@ -23,7 +25,7 @@
       if (!recomendacion.imagenes[indiceImagen]) {
         setImagenActual(imagenes[0]);
       } else {
-        fetch(`http://localhost:8080/autos/${recomendacion.id}/imagenes/${recomendacion.imagenes[indiceImagen].id}`)
+        fetch(`${baseURL}/autos/${recomendacion.id}/imagenes/${recomendacion.imagenes[indiceImagen].id}`)
         .then((res) => {
           return res.blob();
         })
@@ -51,13 +53,13 @@
         </div>
         <div className={cardRecomendacionesStyles.cardDetails}>
           <h3>{recomendacion.modelo}</h3>
-          <Link to={`/Detail/${recomendacion.id}`} className={cardRecomendacionesStyles.link}>
+          <Link to={`/detalle/${recomendacion.id}`} className={cardRecomendacionesStyles.link}>
             <button>Ver Detalle</button>
           </Link>
         </div>
       </div>
     </div>
   );
-  };
+};
 
-  export default CardRecomendacion
+export default CardRecomendacion

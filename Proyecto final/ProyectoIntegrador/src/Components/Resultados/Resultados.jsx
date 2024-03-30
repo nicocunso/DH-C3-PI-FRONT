@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import CardRecomendacion from '../Cards/AutosCategoria/CardRecomendacion/CardRecomendacion';
+import CardRecomendacion from '../Recomendaciones/Cards/CardRecomendacion';
+import resultadosStyles from '../Resultados/Resultados.module.css';
+import { baseURL } from '../../config/config';
 
 const Resultados = ({ modeloFiltrado }) => {
   const [autos, setAutos] = useState([]);
@@ -13,7 +15,7 @@ const Resultados = ({ modeloFiltrado }) => {
 
     const obtenerAutosFiltrados = async () => {
       try {
-        const response = await fetch('http://localhost:8080/autos');
+        const response = await fetch(`${baseURL}/autos`);
         if (!response.ok) {
           throw new Error('Error al obtener los datos de los autos');
         }
@@ -37,7 +39,7 @@ const Resultados = ({ modeloFiltrado }) => {
     <div>
       {autos.length > 0 && modeloFiltrado && (
         <div>
-          <h2>Resultados</h2>
+          <h2 className={resultadosStyles.h2}>{ modeloFiltrado }</h2>
           <div>
             {autos.map(auto => (
               <CardRecomendacion key={auto.id} recomendacion={auto} />

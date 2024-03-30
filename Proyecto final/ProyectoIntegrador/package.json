@@ -11,11 +11,12 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@natscale/react-calendar": "^0.0.0-beta.26",
     "axios": "^1.6.7",
     "react": "^18.2.0",
+    "react-calendar": "^4.8.0",
     "react-datepicker": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3"

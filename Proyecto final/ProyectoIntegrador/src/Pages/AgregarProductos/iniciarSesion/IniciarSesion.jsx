@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom";
 import iniciarsesionstyles from './IniciarSesion.module.css'
 import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../../../config/config';
 
 const IniciarSesion = () => {
   const location = useLocation();
@@ -25,7 +26,7 @@ const IniciarSesion = () => {
       body: JSON.stringify(credenciales),
     };
 
-    fetch('http://localhost:8080/usuarios/identificar', options)
+    fetch(`${baseURL}/usuarios/identificar`, options)
     .then((res) => {
       if (res.status == 200) {
         setError('');

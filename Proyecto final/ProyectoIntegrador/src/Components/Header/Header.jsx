@@ -28,7 +28,10 @@ const Header = () => {
             <div className= {headerStyles.login}>
                 { !user && !isAdminUrl && <Link to= "/crearCuenta"><button>Crear Cuenta</button></Link> }
                 { !user && !isAdminUrl && <Link to="/iniciarSesion"><button>Iniciar Sesión</button></Link> }
-                { user && <button onClick={() => cerrarSesion()}>Cerrar Sesion</button> }
+                <div style={{ display:"flex" }}>
+                    { user && <p>Bienvenido Usuario</p> }
+                    { user && <button onClick={() => cerrarSesion()}>Cerrar Sesion</button> }
+                </div>
             </div>
         </div>
     )

@@ -4,7 +4,6 @@
     align-items: center;
     max-width: 100vw;
     margin: 0 auto;
-    padding-top: 20vh;
 }
 
 .buttonContainer {
@@ -15,10 +14,16 @@
 }
 
 .titulo {
-    position: relative;
-    margin-left: 20px;
-    margin-right: auto;
-    margin-bottom: 10px;
+    display: flex;
+    width: 100vw;
+    flex-wrap:nowrap;
+    align-items: center;
+    padding: 0 30px 0 60px;
+}
+
+.titulo h1 {
+    flex-grow: 1;
+    text-align:center;
 }
 
 @media screen and (max-width: 850px) {
@@ -118,33 +123,51 @@
 
 .imagenesWrapper {
     display: flex;
-    margin-top: 20px;
 }
 
 .primerImagen {
-    width: 600px;
+    width: 50%;
     height: auto;
-    margin-left: 20px;
-    margin-right: 25px;
 }
 
-@media screen and (max-width: 900px) {
-    .imagenGridTop,
-    .imagenGridBottom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        display: none;
-    }
+.segundaImagen {
+    width: 50%;
+    height: auto;
+}
+
+.imagenGridTop {
+    height: 50%;
+}
+
+.imagenGridBottom {
+    height: 50%;
 }
 
 .imagen {
     width: calc(90% - 2px);
-    margin-bottom: 5px;
 }
 
 .imagenGrilla {
-    width: 300px; 
-    height: auto; 
+    width: 50%;
+    height: 100%;
 }
+
+.calendarsWrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.calendarContainer {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.available-date {
+    background-color: green; /* Color para fechas disponibles */
+  }
+
+  .unavailable-date {
+    background-color: red; /* Color para fechas no disponibles */
+  }

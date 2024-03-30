@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import crearcuentastyles from './CrearCuenta.module.css'
 import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../../../config/config';
 
 
 const Registro = () => {
@@ -22,7 +23,7 @@ const Registro = () => {
       body: JSON.stringify(usuario),
     };
 
-    fetch('http://localhost:8080/usuarios', options);
+    fetch(`${baseURL}/usuarios`, options);
   };
 
   const [errores, setErrores] = useState({});

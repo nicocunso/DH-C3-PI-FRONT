@@ -1,14 +1,13 @@
-import React, {useState, useEffect} from 'react'
-import recomendacionesStyles from '../Recomendaciones/Recomendaciones.module.css'
-import { CardRecomendacion } from '../Cards/AutosCategoria/CardRecomendacion/CardRecomendacion';
-import DetalleRecomendacion from '../DetalleRecomendacion/DetalleRecomendacion';
+import React, {useState, useEffect} from 'react';
+import recomendacionesStyles from '../Recomendaciones/Recomendaciones.module.css';
+import { CardRecomendacion } from './Cards/CardRecomendacion';
+import DetalleRecomendacion from './Detalle/DetalleRecomendacion';
+import { baseURL } from '../../config/config';
 
 const Recomendaciones = () => {
   const [mostrarDetalle, setMostrarDetalle] = useState(false);
   const [recomendacionSeleccionada, setRecomendacionSeleccionada] = useState(null);
   const [recomendaciones, setRecomendaciones] = useState([]);
-  const [paginaActual, setPaginaActual] = useState(1);
-  const recomendacionesPorPagina = 10;
 
   
   useEffect(() => {
@@ -17,7 +16,7 @@ const Recomendaciones = () => {
   }, []);
 
   const obtenerRecomendaciones = () => {
-    fetch('http://localhost:8080/autos')
+    fetch(`${baseURL}/autos`)
       .then((res) => {
         return res.json();
       })

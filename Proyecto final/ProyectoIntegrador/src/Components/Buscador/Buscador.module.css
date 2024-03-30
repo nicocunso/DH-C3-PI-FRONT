@@ -1,13 +1,11 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     background-color: rgba(172, 192, 217, 0.5);
-    height: 25vh;
+    padding-bottom: 20px;
     width: 100vw;
-    margin-top: 0px;
-    margin-bottom: 10px
   }
 
   .otroContainer{

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import AgregarProductosStyles from './AgregarProductos.module.css';
+import { baseURL } from '../../config/config';
 
 const ActualizarProducto = () => {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ const ActualizarProducto = () => {
 
   // Función para obtener los autos
   const obtenerVehiculo = (id) => {
-    fetch(`http://localhost:8080/autos/${id}`)
+    fetch(`${baseURL}/autos/${id}`)
     .then((res) => {
       return res.json();
     })
@@ -74,7 +75,7 @@ const ActualizarProducto = () => {
       body: JSON.stringify(vehiculo),
     };
 
-    fetch(`http://localhost:8080/autos`, options);
+    fetch(`${baseURL}/autos`, options);
   };
 
   const handleSubmit = (e) => {
@@ -101,10 +102,12 @@ const ActualizarProducto = () => {
 
   return (
     <div className={AgregarProductosStyles.container}>
-      <div className={AgregarProductosStyles.backButton} onClick={() => navigate('/admin')}>
-        <FontAwesomeIcon icon={faArrowLeft} className={AgregarProductosStyles.backIcon} />
+      <div className={AgregarProductosStyles.titleAndButton}>
+        <h2>Actualizar Producto</h2>
+        <div className={AgregarProductosStyles.backButton} onClick={() => navigate('/admin')}>
+          <button>Atras</button>
+        </div>
       </div>
-      <h2>Actualizar Producto</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Categoría del Vehículo:

@@ -4,7 +4,6 @@ import Buscador from '../Buscador/Buscador';
 import Categorias from '../Categorias/Categorias';
 import Footer from '../Footer/Footer'
 import Recomendaciones from '../Recomendaciones/Recomendaciones';
-import Header from '../Header/Header';
 import Resultados from '../Resultados/Resultados';
 
 const Body = () => {
@@ -14,16 +13,9 @@ const Body = () => {
     setModeloFiltrado(modelo);
   };
 
-  const handleEnterPress = event => {
-    if (event.key === 'Enter') {
-      buscarAutosPorModelo(event.target.value);
-    }
-  };
-
   return (
     <div className={bodyStyles.body}>
-      <Header/>
-      <Buscador onBuscar={buscarAutosPorModelo} onEnterPress={handleEnterPress} />
+      <Buscador onBuscar={buscarAutosPorModelo} />
       <Categorias/>
       <Recomendaciones/>
       <Resultados modeloFiltrado={modeloFiltrado} />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import listaUsuariosStyle from './ListaUsuarios.module.css'
+import { baseURL } from '../../config/config';
 
 const ListaUsuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
@@ -12,7 +13,7 @@ const ListaUsuarios = () => {
 
   // Función para obtener los usuarios no admin
   const obtenerUsuarios = () => {
-    fetch('http://localhost:8080/usuarios/roles/0') // 0 => ROLE_USER | 1 => ROLE_ADMIN
+    fetch(`${baseURL}/usuarios/roles/0`) // 0 => ROLE_USER | 1 => ROLE_ADMIN
       .then((res) => {
         return res.json();
       })
@@ -23,7 +24,7 @@ const ListaUsuarios = () => {
 
   // Función para actualizar rol de cliente a administrador
   const actualizarRol = (id) => {
-    fetch(`http://localhost:8080/usuarios/${id}`, { method: 'PUT' })
+    fetch(`${baseURL}/usuarios/${id}`, { method: 'PUT' })
       .then((res) => {
         return res;
       })

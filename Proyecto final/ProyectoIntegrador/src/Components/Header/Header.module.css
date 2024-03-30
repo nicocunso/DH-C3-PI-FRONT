@@ -1,15 +1,11 @@
 .header {
     width: 100vw; 
-    height: 15vh;
+    height: 10vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px; 
     background-color: #f0f0f0;
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    z-index: 1000; 
+    padding: 0 20px 0 20px;
 }
 
 .logo {
@@ -19,6 +15,7 @@
 
 .logoLink {
     display: flex;
+    align-items: center;
 }
 
 .login button {

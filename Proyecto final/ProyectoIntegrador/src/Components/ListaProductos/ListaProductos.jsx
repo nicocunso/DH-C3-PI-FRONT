@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import listaProductosStyle from './ListaProductos.module.css'
-import panelAdminStyles from '../../Pages/AgregarProductos/panelAdmin/PanelAdmin';
-import { Link } from 'react-router-dom';
+import listaProductosStyle from './ListaProductos.module.css';
+import { baseURL } from '../../config/config';
 
 const ListaProductos = () => {
   const [productos, setProductos] = useState([]);
@@ -14,7 +13,7 @@ const ListaProductos = () => {
 
   // Función para obtener los autos
   const obtenerProductos = () => {
-    fetch('http://localhost:8080/autos')
+    fetch(`${baseURL}/autos`)
       .then((res) => {
         return res.json();
       })
@@ -25,7 +24,7 @@ const ListaProductos = () => {
 
   // Función para eliminar los autos
   const eliminarProductos = (id) => {
-    fetch(`http://localhost:8080/autos/${id}`, { method: 'DELETE' })
+    fetch(`${baseURL}/autos/${id}`, { method: 'DELETE' })
       .then((res) => {
         return res.json();
       })
@@ -82,7 +81,7 @@ const ListaProductos = () => {
                 {/* <Link to="/admin/actualizarProductos"> */}
                   <button className={listaProductosStyle.eliminar} onClick={() => redir(producto.id)}>Actualizar</button>
                 {/* </Link> */}
-                <button className={listaProductosStyle.eliminar} onClick={() => handleEliminarProducto(producto.id)}>Eliminar</button>
+                  <button className={listaProductosStyle.eliminar} onClick={() => handleEliminarProducto(producto.id)}>Eliminar</button>
               </td>
             </tr>
           ))}

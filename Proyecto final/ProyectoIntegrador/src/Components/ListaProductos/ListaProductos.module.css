@@ -1,9 +1,8 @@
 .container{
-    width: 70vw;
+    width: 70%;
     display: flex;
     flex-direction: column;
     margin-top: 50px;
-    
 }
 
 td{
@@ -13,13 +12,10 @@ td{
 
 .eliminar{
     border-color: black;
-    
+    margin: 2.5px;
 }
 
 .paginacion{
     text-align: center;
 }
-
-
-
 

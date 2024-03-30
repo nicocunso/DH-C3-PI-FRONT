@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import AgregarProductosStyles from './AgregarProductos.module.css';
+import { baseURL } from '../../config/config';
 
 const AgregarProducto = () => {
   const navigate = useNavigate();
@@ -61,7 +60,7 @@ const AgregarProducto = () => {
       body: JSON.stringify(vehiculo),
     };
 
-    fetch('http://localhost:8080/autos', options);
+    fetch(`${baseURL}/autos`, options);
   };
 
   const handleSubmit = (e) => {
@@ -89,11 +88,12 @@ const AgregarProducto = () => {
   return (
     
     <div className={AgregarProductosStyles.container}>
-
-      <div className={AgregarProductosStyles.backButton} onClick={() => navigate('/admin')}>
-        <button>Atras</button>
+      <div className={AgregarProductosStyles.titleAndButton}>
+        <h2>Agregar Producto</h2>
+        <div className={AgregarProductosStyles.backButton} onClick={() => navigate('/admin')}>
+          <button>Atras</button>
+        </div>
       </div>
-      <h2>Agregar Producto</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Categoría del Vehículo:
