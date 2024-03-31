@@ -26,13 +26,24 @@
     text-align:center;
 }
 
-@media screen and (max-width: 850px) {
-    .titulo {
-        position: relative;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.infoColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagenesWrapper{
+        
+    display: flex;
+    
+}
+
 
 .contentWrapper {
     display: flex;
@@ -76,11 +87,19 @@
     text-align: center;
 }
 
-@media (max-width: 900px) {
-    .iconContainer .icon svg {
-        display: none;
-    }
+.imagen {
+    width: calc(90% - 2px);
+    margin-bottom: 5px;
 }
+
+
+
+.imagenGrilla {
+    width: 350px; 
+    height: auto; 
+}
+
+
 
 .price {
     color: #03445e;
@@ -166,8 +185,8 @@
 
 .available-date {
     background-color: green; /* Color para fechas disponibles */
-  }
+}
 
-  .unavailable-date {
+.unavailable-date {
     background-color: red; /* Color para fechas no disponibles */
-  }
+}

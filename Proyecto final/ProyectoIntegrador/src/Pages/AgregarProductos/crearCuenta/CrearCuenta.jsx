@@ -70,34 +70,30 @@ const Registro = () => {
   return (
     <div className={crearcuentastyles.container}>
       <h2>Registro</h2>
-      <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
-        <label>
-          Nombre:
-          <input type="text" value={nuevoUsuario.nombre} onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, nombre: e.target.value })} />
-          
-        </label>
-        {errores.nombre && <span style={{marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.nombre}</span>}
+      <form onSubmit={handleSubmit} style={{ margin: 'auto', minWidth: '100px' }}>
+        <div>
+            <label>Nombre:</label>
+            <input type="text" value={nuevoUsuario.nombre} onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, nombre: e.target.value })} />
+            {errores.nombre && <span style={{marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.nombre}</span>}
+        </div>
         <br />
-        <label>
-          Apellido:
+        <div>
+          <label>Apellido:</label>
           <input type="text" value={nuevoUsuario.apellido} onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, apellido: e.target.value })} />
-          
-        </label>
-        {errores.apellido && <span style={{marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.apellido}</span>}
+          {errores.apellido && <span style={{marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.apellido}</span>}
+        </div>
         <br />
-        <label>
-          Email:
+        <div>
+          <label>Email:</label>
           <input type="email" value={nuevoUsuario.email} onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, email: e.target.value })} />
-          
-        </label>
-        {errores.email && <span style={{marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.email}</span>}
+          {errores.email && <span style={{marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.email}</span>}
+        </div>
         <br />
-        <label>
-          Contraseña:
+        <div>
+          <label>Contraseña:</label>
           <input type="password" value={nuevoUsuario.contrasena} onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, contrasena: e.target.value })} />
-          
-        </label>
-        {errores.contrasena && <span style={{ marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.contrasena}</span>}
+          {errores.contrasena && <span style={{ marginTop:'10px', fontSize: '15px', color: 'red' }}>{errores.contrasena}</span>}
+        </div>
         <br />
         <button className ={crearcuentastyles.button} type="submit">Registrarse</button>
       </form>
@@ -106,4 +102,3 @@ const Registro = () => {
 };
 
 export default Registro;
-

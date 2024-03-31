@@ -109,18 +109,18 @@ const ActualizarProducto = () => {
         </div>
       </div>
       <form onSubmit={handleSubmit}>
-        <label>
-          Categoría del Vehículo:
+        <div>
+          <label>Categoría:</label>
           <select name="tipo" onChange={handleChange}>
-            <option selected disabled>Selecciona una categoría</option>
-            <option value="1">Urbano</option>
-            <option value="2">Sedan</option>
-            <option value="3">Coupe</option>
-            <option value="4">Deportivo</option>
-            <option value="5">Todoterreno</option>
-            <option value="6">SUV</option>
-          </select>
-        </label>
+              <option selected disabled>Selecciona una categoría</option>
+              <option value="1">Urbano</option>
+              <option value="2">Sedan</option>
+              <option value="3">Coupe</option>
+              <option value="4">Deportivo</option>
+              <option value="5">Todoterreno</option>
+              <option value="6">SUV</option>
+            </select>
+        </div>
         {/* <br />
         <label for="imagenes">
           Imagenes: */}
@@ -134,29 +134,24 @@ const ActualizarProducto = () => {
             onChange={agregarImagenes}/>
         </label> */}
         <br />
-        <label>
-          Kilometraje:
+        <div>
+          <label>Kilometraje:</label>
           <input type="text" name="kilometraje" value={vehiculo.kilometraje} onChange={handleChange} />
-        </label>
+        </div>
         <br />
-        <label>
-          Precio por Día:
+        <div>
+          <label>Precio por Día:</label>
           <input type="text" name="precioXDia" value={vehiculo.precioXDia} onChange={handleChange} />
-        </label>
+        </div>
         <br />
-        <label>
-          Estado:
+        <div>
+          <label>Estado:</label>
           <select name="estado" onChange={handleChange}>
             <option selected disabled>Selecciona una categoría</option>
             <option value="activo">Activo</option>
             <option value="inactivo">Inactivo</option>
           </select>
-        </label>
-        <br />
-        <label>
-          Aire Acondicionado:
-          <input type="checkbox" name="aireAcondicionado" checked={vehiculo.aireAcondicionado} onChange={handleChange} />
-        </label>
+        </div>
         <br />
         <button type="submit">Actualizar Producto</button>
       </form>

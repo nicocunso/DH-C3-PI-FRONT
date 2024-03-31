@@ -35,11 +35,19 @@
     margin-left: 60px;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin: 20px;
     font-weight: bold;
+}
+
+label {
+    width: 15vw;
+}
+
+select {
+    width: 100%;
 }
 
 button{
@@ -49,19 +57,12 @@ button{
     border: 1px solid black;
     font-weight: bold;
 }
-input, select{
+
+input, select {
     border: 1px solid black;
     border-radius: 5px;
-    margin-left: 10px;
-    
 }
 
-
-  
-  .backIcon {
+.backIcon {
     color: #03445E;
-  }
-
-  
-
-  
+}

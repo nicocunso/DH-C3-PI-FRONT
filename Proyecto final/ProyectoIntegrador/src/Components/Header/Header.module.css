@@ -8,9 +8,8 @@
     padding: 0 20px 0 20px;
 }
 
-.logo {
-    width: 80%; 
-    height: 80%;
+.logo{
+    width: 75%;
 }
 
 .logoLink {
@@ -47,14 +46,83 @@
 
 .botones {
     display: flex;
-    height: 40%;
-    margin-left: auto;
 }
 
-.botones button {
-    margin-right: 10px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
+
+.botonesdiv{
+display: flex;
+width: 20%;
+justify-content: space-around;
+
+
 }
+
+.buttonh{
+    border: 1px solid black;
+}
+
+
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    
+    .logo{
+        width: 80%;
+    }
+
+    .header{
+        height: 11vh;
+    }
+
+    
+    
+    .buttonh{
+        width: 160px;
+        height: 75px;
+        font-size: 18px;
+
+    }
+
+    .botonesdiv{
+        display: flex;
+        width: 20%;
+        justify-content: space-around;
+        margin-right: 140px;
+        
+        }
+
+    .divlogo{
+
+            display: flex;
+            align-items: center;
+            width: 30%;
+            justify-content: space-around;
+        }
+    .lema{
+        font-size: 20px;
+        
+    }
+
+  }
+
+  @media screen and (min-width: 390px) and (max-width: 844px){
+
+    .lema{
+        display: none;
+    }
+
+    .logo{
+        width: 65%;
+    }
+
+    .botonesdiv{
+        margin-right: 150px;
+        
+
+    }
+
+    .buttonh{
+        font-size: 15px;
+        width: 100px;
+    }
+
+  }

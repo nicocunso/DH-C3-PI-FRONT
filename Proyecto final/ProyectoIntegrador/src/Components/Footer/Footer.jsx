@@ -9,7 +9,9 @@ const Footer = () => {
         
         
         <img className={footerStyles.img} src={logo} alt="logo" />
+        <div className={footerStyles.h4}>
         <h4>Copyright © 2024 CarBook</h4>
+        </div>
     </div>
   )
 }

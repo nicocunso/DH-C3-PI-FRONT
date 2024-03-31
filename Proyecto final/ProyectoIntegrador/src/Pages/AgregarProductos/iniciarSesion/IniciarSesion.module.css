@@ -1,12 +1,19 @@
 .container{
-    
     display: flex;
     flex-direction: column;
     width: 100vw;
-    
 }
 
 .button{
     border: 1px solid black;
     border-color: black;
+}
+
+input {
+    width: 100%;
+}
+
+form > div {
+    display: flex;
+    align-items: center;
 }

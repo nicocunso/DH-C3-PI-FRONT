@@ -3,13 +3,15 @@ import recomendacionesStyles from '../Recomendaciones/Recomendaciones.module.css
 import { CardRecomendacion } from './Cards/CardRecomendacion';
 import DetalleRecomendacion from './Detalle/DetalleRecomendacion';
 import { baseURL } from '../../config/config';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const Recomendaciones = () => {
   const [mostrarDetalle, setMostrarDetalle] = useState(false);
   const [recomendacionSeleccionada, setRecomendacionSeleccionada] = useState(null);
   const [recomendaciones, setRecomendaciones] = useState([]);
 
-  
   useEffect(() => {
     obtenerRecomendaciones();
     barajarRecomendaciones();
@@ -23,7 +25,7 @@ const Recomendaciones = () => {
       .then((data) => {
         setRecomendaciones(data);
       });
-  }
+  };
 
   const barajarRecomendaciones = () => {
     const recomendacionesBarajadas = [...recomendaciones];
@@ -40,7 +42,6 @@ const Recomendaciones = () => {
   const toggleDetalle = (recomendacion) => {
     setRecomendacionSeleccionada(recomendacion);
     setMostrarDetalle(true);
-    console.log('Mostrar detalle:', mostrarDetalle);
   };
 
   const cerrarDetalle = () => {
@@ -48,27 +49,34 @@ const Recomendaciones = () => {
     setMostrarDetalle(false);
   };
 
+  // Configuración del carrusel
+  const settings = {
+    dots: true,
+    infinite: false, // Hacer el carrusel finito
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+  };
+
   return (
-    <div>
+    <div className={recomendacionesStyles.container}>
       <br />
       <h2 className={recomendacionesStyles.h2}>Recomendaciones</h2>
-      <div className={recomendacionesStyles.container}>
+      <Slider {...settings}>
         {recomendaciones.map(recomendacion => (
-          <CardRecomendacion
-            key={recomendacion.id}
-            recomendacion={recomendacion}
-            onVerDetalle={() => toggleDetalle(recomendacion)}
-          />
+          <div key={recomendacion.id}>
+            <CardRecomendacion
+              recomendacion={recomendacion}
+              onVerDetalle={() => toggleDetalle(recomendacion)}
+            />
+          </div>
         ))}
-      </div>
+      </Slider>
       {mostrarDetalle && (
-        <DetalleRecomendacion
-          recomendacion={recomendacionSeleccionada}
-          onClose={cerrarDetalle}
-        />
+        <DetalleRecomendacion/>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Recomendaciones
+export default Recomendaciones;

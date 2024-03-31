@@ -56,23 +56,23 @@ const IniciarSesion = () => {
     <div className={iniciarsesionstyles.container}>
       <h2>Iniciar Sesión</h2>
       <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
-        <label>
-          Email:
+        <div>
+          <label>Email:</label>
           <input
             type="email"
             value={credenciales.email}
             onChange={(e) => setCredenciales({ ...credenciales, email: e.target.value })}
           />
-        </label>
+        </div>
         <br />
-        <label>
-          Contraseña:
+        <div>
+          <label>Contraseña:</label>
           <input
             type="password"
             value={credenciales.contrasena}
             onChange={(e) => setCredenciales({ ...credenciales, contrasena: e.target.value })}
           />
-        </label>
+        </div>
         <br />
         <button className={iniciarsesionstyles.button} type="submit">Iniciar Sesión</button>
       </form>

@@ -89,14 +89,14 @@ const AgregarProducto = () => {
     
     <div className={AgregarProductosStyles.container}>
       <div className={AgregarProductosStyles.titleAndButton}>
-        <h2>Agregar Producto</h2>
+        <h2>Agregar Vehículo</h2>
         <div className={AgregarProductosStyles.backButton} onClick={() => navigate('/admin')}>
           <button>Atras</button>
         </div>
       </div>
       <form onSubmit={handleSubmit}>
-        <label>
-          Categoría del Vehículo:
+        <div>
+          <label>Categoría:</label>
           <select name="tipo" onChange={handleChange}>
             <option selected disabled>Selecciona una categoría</option>
             <option value="1">Urbano</option>
@@ -106,17 +106,17 @@ const AgregarProducto = () => {
             <option value="5">Todoterreno</option>
             <option value="6">SUV</option>
           </select>
-        </label>
+        </div>
         <br />
-        <label>
-          Modelo :
+        <div>
+          <label>Modelo:</label>
           <input type="text" name="modelo" value={vehiculo.modelo} onChange={handleChange} />
-        </label>
+        </div>
         <br />
-        <label>
-          Año de Fabricación:
+        <div>
+          <label>Año de Fabricación:</label>
           <input type="text" name="anno" value={vehiculo.anno} onChange={handleChange} />
-        </label>
+        </div>
         {/* <br />
         <label for="imagenes">
           Imagenes: */}
@@ -130,40 +130,35 @@ const AgregarProducto = () => {
             onChange={agregarImagenes}/>
         </label> */}
         <br />
-        <label>
-          Matrícula:
+        <div>
+          <label>Matrícula:</label>
           <input type="text" name="matricula" value={vehiculo.matricula} onChange={handleChange} />
-        </label>
+        </div>
         <br />
-        <label>
-          Tipo de Combustible:
+        <div>
+          <label>Tipo de Combustible:</label>
           <input type="text" name="tipoCombustible" value={vehiculo.tipoCombustible} onChange={handleChange} />
-        </label>
+        </div>
         <br />
-        <label>
-          Kilometraje:
+        <div>
+          <label>Kilometraje:</label>
           <input type="text" name="kilometraje" value={vehiculo.kilometraje} onChange={handleChange} />
-        </label>
+        </div>
         <br />
-        <label>
-          Precio por Día:
+        <div>
+          <label>Precio por Día:</label>
           <input type="text" name="precioXDia" value={vehiculo.precioXDia} onChange={handleChange} />
-        </label>
+        </div>
         <br />
-        <label>
-          Estado:
+        <div>
+          <label>Estado:</label>
           <input type="text" name="estado" value={vehiculo.estado} onChange={handleChange} />
-        </label>
+        </div>
         <br />
-        <label>
-          Número de Puertas:
+        <div>
+          <label>Número de Puertas:</label>
           <input type="text" name="numeroPuertas" value={vehiculo.numeroPuertas} onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Aire Acondicionado:
-          <input type="checkbox" name="aireAcondicionado" checked={vehiculo.aireAcondicionado} onChange={handleChange} />
-        </label>
+        </div>
         <br />
         <button type="submit">Agregar Producto</button>
       </form>

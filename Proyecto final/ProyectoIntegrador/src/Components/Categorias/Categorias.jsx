@@ -25,6 +25,7 @@ const Categorias = () => {
 
   return (
     <div>
+      <br />
       <h2 className={categoriasStyle.h2}>Categorias</h2>
       <div className={categoriasStyle.contenedor}>
       {categorias.map(categoria => {

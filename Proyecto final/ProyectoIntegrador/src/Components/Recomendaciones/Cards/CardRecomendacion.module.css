@@ -34,3 +34,27 @@ h2 {
   width: 20vw;
   height: 20vh;
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    .img{
+        height: 250px;
+    }
+
+    .buttoncard{
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 390px) and (max-width: 844px){
+    .img{
+        height: 200px;
+        width: 200px;
+    }
+
+    .container{
+        
+        box-shadow: none;
+        border-radius: none;
+        width: 100vw;
+    }
+}

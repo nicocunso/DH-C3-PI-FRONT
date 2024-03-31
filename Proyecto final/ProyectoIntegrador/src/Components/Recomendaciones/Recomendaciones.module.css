@@ -6,9 +6,12 @@
 }
 
 .container{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    text-align: left;
+    width: 100vw;
+}
+
+@media screen and (min-width: 390px) and (max-width: 844px){
+    .h2{
+        text-align: center;
+    }
 }
 

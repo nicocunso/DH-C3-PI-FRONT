@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import recomendacionesStyles from '../../Recomendaciones/Recomendaciones.module.css';
+import autosCategoriasStyles from '../Autos/AutosCategorias.module.css';
 import { CardRecomendacion } from '../../Recomendaciones/Cards/CardRecomendacion';
 import DetalleRecomendacion from '../../Recomendaciones/Detalle/DetalleRecomendacion';
 import { useParams } from 'react-router-dom';
@@ -61,8 +61,8 @@ const AutosCategorias = () => {
     <div>
       <Buscador onBuscar={buscarAutosPorModelo} />
       <br />
-      <h2 className={recomendacionesStyles.h2}>Resultados</h2>
-      <div className={recomendacionesStyles.container}>
+      <h2 className={autosCategoriasStyles.h2}>Resultados</h2>
+      <div className={autosCategoriasStyles.container}>
         {autosCategorias.map(autosCategoria => (
           <CardRecomendacion
             key={autosCategoria.id}
