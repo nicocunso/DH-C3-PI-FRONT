@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendarAlt,
@@ -25,7 +25,7 @@ import nissan3 from "../../assets/Nissan/nissan3.png";
 import nissan4 from "../../assets/Nissan/nissan4.webp";
 import nissan5 from "../../assets/Nissan/nissan5.jpg";
 
-import civic from "../../assets/HondaCivic/civic.jpg";
+import civic from "../../assets/HondaCivic/Civic.png";
 import HCivic1 from "../../assets/HondaCivic/HCivic1.jpg";
 import HCivic2 from "../../assets/HondaCivic/HCivic2.jpg";
 import HCivic3 from "../../assets/HondaCivic/HCivic3.jpg";
@@ -193,48 +193,49 @@ const DetalleRecomendacion = ({ recomendacion, onClose }) => {
     (rec) => rec.id.toString() === Params.id
   );
 
+  const BackTo = () => window.history.back();
+
   return (
     <div className={styles.container}>
-      
       <div className={styles.buttonContainer}>
-      <Link to="/">
-        <button className={styles.botondetalle}>Volver</button>
-      </Link>
-    </div>
+        <button className={styles.botondetalle} onClick={BackTo}>
+          Volver
+        </button>
+      </div>
       <div className={styles.titulo}>
         <h2>{recomendaciones[Params.id - 1].marca}</h2>
         <h2>{recomendaciones[Params.id - 1].modelo}</h2>
       </div>
       <div className={styles.imagenesWrapper}>
         <div className={styles.divauto}>
-        <img 
-          src={recomendacionActual.imagen[0]}
-          alt="Primera Imagen"
-          className={styles.primerImagen}
-        />
+          <img
+            src={recomendacionActual.imagen[0]}
+            alt="Primera Imagen"
+            className={styles.primerImagen}
+          />
         </div>
         <div className={styles.cuadricula}>
-        <div className={styles.imagenGridTop}>
-  {recomendacionActual.imagen.slice(1, 3).map((imagen, index) => (
-    <img
-      key={index}
-      src={imagen}
-      alt={`Imagen ${index + 1}`}
-      className={`${styles.imagen} ${styles.imagenGrilla}`}
-    />
-  ))}
-</div>
-<div className={styles.imagenGridBottom}>
-  {recomendacionActual.imagen.slice(3).map((imagen, index) => (
-    <img
-      key={index}
-      src={imagen}
-      alt={`Imagen ${index + 1}`}
-      className={`${styles.imagen} ${styles.imagenGrilla}`}
-    />
-  ))}
-</div>
-</div>
+          <div className={styles.imagenGridTop}>
+            {recomendacionActual.imagen.slice(1, 3).map((imagen, index) => (
+              <img
+                key={index}
+                src={imagen}
+                alt={`Imagen ${index + 1}`}
+                className={`${styles.imagen} ${styles.imagenGrilla}`}
+              />
+            ))}
+          </div>
+          <div className={styles.imagenGridBottom}>
+            {recomendacionActual.imagen.slice(3).map((imagen, index) => (
+              <img
+                key={index}
+                src={imagen}
+                alt={`Imagen ${index + 1}`}
+                className={`${styles.imagen} ${styles.imagenGrilla}`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
       <div className={styles.contentWrapper}>
         <div className={styles.descriptionColumn}>

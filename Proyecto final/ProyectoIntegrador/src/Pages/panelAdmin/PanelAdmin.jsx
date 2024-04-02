@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import Header from '../../../Components/Header/Header';
-import panelAdminStyles from './PanelAdmin.module.css';
-import ListaProductos from '../../../Components/ListaProductos/ListaProductos';
-import ListaUsuarios from '../../../Components/ListaUsuarios/ListaUsuarios';
-import Footer from '../../../Components/Footer/Footer';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import Header from "../../Components/Header/Header";
+import panelAdminStyles from "./PanelAdmin.module.css";
+import ListaProductos from "../../Components/ListaProductos/ListaProductos";
+import ListaUsuarios from "../../Components/ListaUsuarios/ListaUsuarios";
+import Footer from "../../Components/Footer/Footer";
+import { Link } from "react-router-dom";
 
 const PanelAdmin = () => {
   const [mostrarListaProductos, setMostrarListaProductos] = useState(false);
@@ -18,16 +18,24 @@ const PanelAdmin = () => {
 
   return (
     <div className={panelAdminStyles.padre}>
-      <Header acceder = {false} />
+      <Header acceder={false} />
       <div className={panelAdminStyles.container}>
         <div className={panelAdminStyles.containernav}>
           <Link className={panelAdminStyles.link} to="/admin/agregarProductos">
-            <button className={panelAdminStyles.button}>Agregar Productos</button>
+            <button className={panelAdminStyles.button}>
+              Agregar Productos
+            </button>
           </Link>
-          <button className={panelAdminStyles.button} onClick={handleToggleListaProductos}>
+          <button
+            className={panelAdminStyles.button}
+            onClick={handleToggleListaProductos}
+          >
             Listar Productos
           </button>
-          <button className={panelAdminStyles.button} onClick={handleToggleListaUsuarios}>
+          <button
+            className={panelAdminStyles.button}
+            onClick={handleToggleListaUsuarios}
+          >
             Listar Usuarios
           </button>
         </div>

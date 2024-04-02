@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import recomendacionesStyles from '../Recomendaciones/Recomendaciones.module.css';
-import { CardRecomendacion } from '../Cards/AutosCategoria/CardRecomendacion/CardRecomendacion';
-import DetalleRecomendacion from '../DetalleRecomendacion/DetalleRecomendacion';
+import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import recomendacionesStyles from "../Recomendaciones/Recomendaciones.module.css";
+import { CardRecomendacion } from "../Cards/AutosCategoria/CardRecomendacion/CardRecomendacion";
+import DetalleRecomendacion from "../Detalle/Detalle";
 
 const Recomendaciones = () => {
   const [mostrarDetalle, setMostrarDetalle] = useState(false);
-  const [recomendacionSeleccionada, setRecomendacionSeleccionada] = useState(null);
+  const [recomendacionSeleccionada, setRecomendacionSeleccionada] =
+    useState(null);
   const [recomendaciones, setRecomendaciones] = useState([]);
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const Recomendaciones = () => {
   }, []);
 
   const obtenerRecomendaciones = () => {
-    fetch('http://localhost:8080/autos')
+    fetch("http://localhost:8080/autos")
       .then((res) => res.json())
       .then((data) => {
         setRecomendaciones(data);
@@ -60,7 +61,7 @@ const Recomendaciones = () => {
       <br />
       <h2 className={recomendacionesStyles.h2}>Recomendaciones</h2>
       <Slider {...settings}>
-        {recomendaciones.map(recomendacion => (
+        {recomendaciones.map((recomendacion) => (
           <div key={recomendacion.id}>
             <CardRecomendacion
               recomendacion={recomendacion}
