@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import listaProductosStyle from './ListaProductos.module.css'
-import panelAdminStyles from '../../Pages/AgregarProductos/panelAdmin/PanelAdmin';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import listaProductosStyle from "./ListaProductos.module.css";
+import panelAdminStyles from "../../Pages/panelAdmin/PanelAdmin";
+import { Link } from "react-router-dom";
 
 const ListaProductos = () => {
   const [productos, setProductos] = useState([]);
@@ -14,31 +14,33 @@ const ListaProductos = () => {
 
   // Función para obtener los autos
   const obtenerProductos = () => {
-    fetch('http://localhost:8080/autos')
+    fetch("http://localhost:8080/autos")
       .then((res) => {
         return res.json();
       })
       .then((data) => {
         setProductos(data);
       });
-  }
+  };
 
   // Función para eliminar los autos
   const eliminarProductos = (id) => {
-    fetch(`http://localhost:8080/autos/${id}`, { method: 'DELETE' })
+    fetch(`http://localhost:8080/autos/${id}`, { method: "DELETE" })
       .then((res) => {
         return res.json();
       })
       .then((data) => {
         setProductos(data);
       });
-  }
+  };
 
   const productosPorPagina = 6;
   const [paginaActual, setPaginaActual] = useState(1);
 
   const handleEliminarProducto = (id) => {
-    const confirmacion = window.confirm('¿Estás seguro de que quieres eliminar este producto?');
+    const confirmacion = window.confirm(
+      "¿Estás seguro de que quieres eliminar este producto?"
+    );
     if (confirmacion) {
       eliminarProductos(id);
     }
@@ -46,7 +48,10 @@ const ListaProductos = () => {
 
   const indiceUltimoProducto = paginaActual * productosPorPagina;
   const indicePrimerProducto = indiceUltimoProducto - productosPorPagina;
-  const productosActuales = productos.slice(indicePrimerProducto, indiceUltimoProducto);
+  const productosActuales = productos.slice(
+    indicePrimerProducto,
+    indiceUltimoProducto
+  );
 
   const handleClickSiguiente = () => {
     setPaginaActual(paginaActual + 1);
@@ -60,7 +65,7 @@ const ListaProductos = () => {
 
   let redir = (productoId) => {
     window.location.href = `/admin/actualizarProductos/${productoId}`;
-  }
+  };
 
   return (
     <div className={listaProductosStyle.container}>
@@ -74,28 +79,36 @@ const ListaProductos = () => {
           </tr>
         </thead>
         <tbody>
-          {productosActuales.map(producto => (
+          {productosActuales.map((producto) => (
             <tr key={producto.id}>
               <td>{producto.id}</td>
               <td>{producto.modelo}</td>
               <td>
                 {/* <Link to="/admin/actualizarProductos"> */}
-                  <button className={listaProductosStyle.eliminar} onClick={() => redir(producto.id)}>Actualizar</button>
+                <button
+                  className={listaProductosStyle.eliminar}
+                  onClick={() => redir(producto.id)}
+                >
+                  Actualizar
+                </button>
                 {/* </Link> */}
-                <button className={listaProductosStyle.eliminar} onClick={() => handleEliminarProducto(producto.id)}>Eliminar</button>
+                <button
+                  className={listaProductosStyle.eliminar}
+                  onClick={() => handleEliminarProducto(producto.id)}
+                >
+                  Eliminar
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       <div className={listaProductosStyle.paginacion}>
-        <button onClick={handleClickAtras}>{'<'}</button>
-        <button onClick={handleClickSiguiente}>{'>'}</button>
+        <button onClick={handleClickAtras}>{"<"}</button>
+        <button onClick={handleClickSiguiente}>{">"}</button>
       </div>
     </div>
   );
 };
 
 export default ListaProductos;
-
-
