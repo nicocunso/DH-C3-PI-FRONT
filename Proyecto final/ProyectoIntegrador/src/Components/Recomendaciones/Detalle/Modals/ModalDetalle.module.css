@@ -1,0 +1,53 @@
+.container {
+  position : fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #f2f2f2;
+  padding: 30px;
+  z-index: 1000;
+}
+
+.overlay {
+  position : fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.7);
+  z-index: 1000;
+}
+
+.titleContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 95%;
+}
+
+.titleContainer h2 {
+  color: black;
+  flex-grow: 1;
+  text-align: center;
+  padding-right: 50px;
+}
+
+.calendarsWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.calendarContainer {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.bookContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}

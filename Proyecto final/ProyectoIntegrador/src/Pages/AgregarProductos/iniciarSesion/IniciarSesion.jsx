@@ -43,7 +43,7 @@ const IniciarSesion = () => {
       localStorage.setItem('user', JSON.stringify(data));
       location.pathname.includes('admin')
         ? navigate('/admin')
-        : navigate('/inicio')
+        : navigate('/')
     })
   };
 

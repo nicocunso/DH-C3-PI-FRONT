@@ -13,8 +13,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./DetalleRecomendacion.module.css";
 import '@natscale/react-calendar/dist/main.css';
-import { Calendar } from '@natscale/react-calendar';
 import { baseURL } from "../../../config/config";
+import ModalDetalle from "./Modals/ModalDetalle";
 
 const DetalleRecomendacion = () => {
   const params = useParams();
@@ -24,7 +24,9 @@ const DetalleRecomendacion = () => {
     precioXDia: ''
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [imagenes, setImagenes] = useState([]);
+  const [reservasExistentes, setReservasExistentes] = useState([]);
 
   // Hook al montar el componente
   useEffect(() => {
@@ -41,13 +43,13 @@ const DetalleRecomendacion = () => {
     .then((data) => {
       setRecomendacion(data);
       obtenerImagenes(data);
+      obtenerReservas(data);
     });
   };
 
   // Función para obtener las imagenes del auto
   const obtenerImagenes = (vehiculo) => {
     const imagenes = vehiculo.imagenes;
-    let vehiculoImagenes = [];
 
     for (let imagen of imagenes) {
       fetch(`${baseURL}/autos/${vehiculo.id}/imagenes/${imagen.id}`)
@@ -59,21 +61,19 @@ const DetalleRecomendacion = () => {
         setImagenes(imagenes => [...imagenes, data]);
       });
     }
-
-    setImagenes(vehiculoImagenes);
-    setIsLoading(false);
   }
 
-  // const [selectedDate, setSelectedDate] = useState(null);
-  // const [selectedDate2, setSelectedDate2] = useState(null); 
-
-  // const handleDateChange = useCallback((date) => {
-  //   setSelectedDate(date);
-  // }, []);
-
-  // const handleDateChange2 = useCallback((date) => {
-  //   setSelectedDate2(date);
-  // }, []);
+  // Función para obtener las reservas existentes
+  const obtenerReservas = (vehiculo) => {
+    fetch(`${baseURL}/reservas/autos/${vehiculo.id}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setReservasExistentes(data);
+        setIsLoading(false);
+      });
+  }
 
   if (isLoading) {
     return (
@@ -140,8 +140,9 @@ const DetalleRecomendacion = () => {
               {recomendacion.precioXDia}
             </div>
             <br />
+            <ModalDetalle open = {isOpen} close = { () => setIsOpen(false)} reservasExistentes = {reservasExistentes} />
             <div className={styles.botonAlquilar}>
-              <button>Alquilar ahora</button>
+              <button onClick = {() => setIsOpen(true)}>Alquilar ahora</button>
             </div>
           </div>
           <br />
@@ -189,27 +190,6 @@ const DetalleRecomendacion = () => {
           </div>
         </div>
       </div>
-      {/* <div>
-        <h3 style={{ textAlign:"center" }}>Reservas</h3>
-        <div className={styles.calendarContainer}>
-          <div className={styles.calendarWrapper}>
-            <h3 style={{ textAlign:"center" }}>Desde</h3>
-            <Calendar
-              value={selectedDate}
-              onChange={handleDateChange}
-            />
-          </div>
-          <div className={styles.calendarWrapper}>
-            <h3 style={{ textAlign:"center" }}>Hasta</h3>
-            <Calendar
-              value={selectedDate2}
-              onChange={handleDateChange2}
-            />
-          </div>
-        </div>
-        <br />
-        <br />
-      </div> */}
     </div>
   );
 };

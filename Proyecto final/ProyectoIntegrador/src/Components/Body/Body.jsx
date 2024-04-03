@@ -7,19 +7,14 @@ import Recomendaciones from '../Recomendaciones/Recomendaciones';
 import Resultados from '../Resultados/Resultados';
 
 const Body = () => {
-  const [modeloFiltrado, setModeloFiltrado] = useState('');
-
-  const buscarAutosPorModelo = modelo => {
-    setModeloFiltrado(modelo);
-  };
 
   return (
     <div className={bodyStyles.body}>
-      <Buscador onBuscar={buscarAutosPorModelo} />
-      <Categorias/>
-      <Recomendaciones/>
-      <Resultados modeloFiltrado={modeloFiltrado} />
-      <Footer/>
+      <Buscador />
+      <Categorias />
+      <Recomendaciones />
+      <Resultados />
+      <Footer />
     </div>
   );
 }

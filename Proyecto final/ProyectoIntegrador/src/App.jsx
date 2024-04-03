@@ -11,6 +11,7 @@ import IniciarSesion from './Pages/AgregarProductos/iniciarSesion/IniciarSesion'
 import Bodito from './Components/Bodito/Bodito'
 import Autenticador from './Components/Autenticador/Autenticador';
 import AutosCategorias from './Components/Categorias/Autos/AutosCategorias';
+import Resultados from './Components/Resultados/Resultados';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Body/>} />
+        <Route path="/busqueda/:searchString" element={<Resultados />} />
         <Route path="/categorias/:id/autos" element={<AutosCategorias />} />
         <Route path="/administración" element={<AgregarProducto />} />
         <Route path="/detalle/:id" element={<DetalleRecomendacion/>} />

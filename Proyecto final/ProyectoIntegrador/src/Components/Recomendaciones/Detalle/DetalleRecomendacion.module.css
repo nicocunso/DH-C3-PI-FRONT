@@ -39,11 +39,8 @@
 }
 
 .imagenesWrapper{
-        
     display: flex;
-    
 }
-
 
 .contentWrapper {
     display: flex;
@@ -169,18 +166,6 @@
 .imagenGrilla {
     width: 50%;
     height: 100%;
-}
-
-.calendarsWrapper {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.calendarContainer {
-    display: flex;
-    align-items: center;
-    gap: 30px;
 }
 
 .available-date {

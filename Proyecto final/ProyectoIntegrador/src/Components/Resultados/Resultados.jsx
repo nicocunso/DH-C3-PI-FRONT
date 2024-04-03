@@ -3,10 +3,17 @@ import CardRecomendacion from '../Recomendaciones/Cards/CardRecomendacion';
 import resultadosStyles from '../Resultados/Resultados.module.css';
 import { baseURL } from '../../config/config';
 import DetalleRecomendacion from '../Recomendaciones/Detalle/DetalleRecomendacion';
+import { useParams } from 'react-router-dom';
+import Buscador from '../Buscador/Buscador';
+import Categorias from '../Categorias/Categorias';
+import Footer from '../Footer/Footer';
+import Recomendaciones from '../Recomendaciones/Recomendaciones';
 
-const Resultados = ({ modeloFiltrado }) => {
+const Resultados = () => {
   const [mostrarDetalle, setMostrarDetalle] = useState(false);
   const [autos, setAutos] = useState([]);
+  const params = useParams();
+  const modeloFiltrado = params && params.searchString ? params.searchString : "";
 
   useEffect(() => {
     // Evitar la llamada a la API si el modelo filtrado está vacío
@@ -48,6 +55,9 @@ const Resultados = ({ modeloFiltrado }) => {
   // Renderizar resultados solo si hay autos y el modelo filtrado no está vacío
   return (
     <div>
+      { modeloFiltrado && <Buscador/> }
+      { modeloFiltrado && <Categorias/> }
+      { modeloFiltrado && <Recomendaciones/> }
       <br />
       <h2 className={resultadosStyles.h2}>{ modeloFiltrado ? modeloFiltrado : "Conocé nuestra flota" }</h2>
       <div className={resultadosStyles.container}>
@@ -62,6 +72,7 @@ const Resultados = ({ modeloFiltrado }) => {
       {mostrarDetalle && (
         <DetalleRecomendacion/>
       )}
+      { modeloFiltrado && <Footer/> }
     </div>
   );
 };

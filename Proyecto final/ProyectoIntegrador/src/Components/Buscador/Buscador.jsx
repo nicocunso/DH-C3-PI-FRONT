@@ -5,10 +5,18 @@ import imgcalendario from '../../assets/calendario.png';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const Buscador = ({ onBuscar }) => {
+const Buscador = () => {
   const [searchString, setSearchString] = useState(null);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+
+  let redir = (searchString) => {
+    if (!searchString) {
+      window.alert('Por favor ingresar el modelo deseado para la busqueda');
+      return;
+    }
+    window.location.href = `/busqueda/${searchString}`;
+  }
 
   const handleDateChange = dates => {
     const [start, end] = dates;
@@ -45,7 +53,7 @@ const Buscador = ({ onBuscar }) => {
             placeholderText="  Elegir rango de fechas"
           />
         </div>
-        <button className={buscadorStyles.button} onClick={() => onBuscar(searchString)}>Buscar</button>
+        <button className={buscadorStyles.button} onClick={() => redir(searchString)}>Buscar</button>
       </div>
     </div>
   );
