@@ -5,7 +5,7 @@ import Categorias from '../Categorias/Categorias';
 import Footer from '../Footer/Footer'
 import Recomendaciones from '../Recomendaciones/Recomendaciones';
 import Resultados from '../Resultados/Resultados';
-import Whatsapp from "../whatsapp/Whatsapp";
+import Whatsapp from "../Whatsapp/Whatsapp";
 
 const Body = () => {
 
