@@ -21,7 +21,6 @@ function App() {
         <Route path="/" element={<Body/>} />
         <Route path="/busqueda/:searchString" element={<Resultados />} />
         <Route path="/categorias/:id/autos" element={<AutosCategorias />} />
-        <Route path="/administración" element={<AgregarProducto />} />
         <Route path="/detalle/:id" element={<DetalleRecomendacion/>} />
         <Route path='/' element={<Body/>}/>
         <Route path='/inicio' element = {<Bodito/>}></Route>
