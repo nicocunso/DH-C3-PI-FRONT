@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../../../Components/Header/Header';
 import panelAdminStyles from './PanelAdmin.module.css';
 import ListaProductos from '../../../Components/ListaProductos/ListaProductos';
 import ListaUsuarios from '../../../Components/ListaUsuarios/ListaUsuarios';

@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Body from './Components/Body/Body';
 import DetalleRecomendacion from './Components/Recomendaciones/Detalle/DetalleRecomendacion';
-import Header from './Components/Header/Header'; 
-import PanelAdmin from './Pages/AgregarProductos/panelAdmin/panelAdmin'
+import Header from './Components/Header/Header';
+import PanelAdmin from './Pages/AgregarProductos/panelAdmin/PanelAdmin';
 import AgregarProducto from './Pages/AgregarProductos/AgregarProducto';
 import ActualizarProducto from './Pages/AgregarProductos/ActualizarProducto'
 import CrearCuenta from './Pages/AgregarProductos/crearCuenta/CrearCuenta'
