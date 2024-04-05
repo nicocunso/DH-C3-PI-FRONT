@@ -6,7 +6,7 @@ import { baseURL } from '../../config/config';
 const AgregarProducto = () => {
   const navigate = useNavigate();
 
-  const [imagenes, setImagenes] = useState(undefined);
+  const [imagenes, setImagenes] = useState([]);
   const [vehiculo, setVehiculo] = useState({
     matricula: '',
     modelo: '',
@@ -24,44 +24,22 @@ const AgregarProducto = () => {
 
   // Función para agregar imagenes
   async function agregarImagenes (e) {
-    setImagenes(e.target.files[0]);
-    // const buffer = await image.arrayBuffer();
-    // let byteArray = new Int8Array(buffer);
-    // setImagenes(byteArray);
-    // const fileReader = new FileReader();
-    // const file = e.currentTarget.files[0];
-    // fileReader.readAsArrayBuffer(file);
-    // const fileByte = getAsByteArray(file);
-    // setImagenes(fileByte)
-    // const buffer = file.arrayBuffer();
-    // let byteArray = 
-    // fr.readAsArrayBuffer(file)
-    // fr.onload = function() {
-      // you can keep blob or save blob to another position
-      // setImagenes(new Blob([fr.result]));
-
-      // url for download
-      // setImagenes(URL.createObjectURL(blob, {type: "image/png"}));
-    };
+    setImagenes(e.target.files);
+  };
 
   // Función para obtener los autos
   const agregarVehiculo = (vehiculo, imagenes) => {
     const data = new FormData();
 
-    data.append('imageFiles', imagenes);
-    data.append('auto', vehiculo);
+    data.append('auto', JSON.stringify(vehiculo));
+    for (let imagen of imagenes) {
+      data.append('imageFiles', imagen);
+    }
 
     const options = {
       method: 'POST',
-      // headers: {
-      //   'content-type': 'multipart/form-data'
-      // },
       body: data
-      // body: JSON.stringify(vehiculo),
     };
-
-    console.log(options);
-    console.log(options.body);
 
     fetch(`${baseURL}/autos`, options);
   };
@@ -71,8 +49,8 @@ const AgregarProducto = () => {
     // Agrego vehiculo
     agregarVehiculo(vehiculo, imagenes);
     console.log('Datos enviados:', vehiculo);
-    
-    navigate('/admin');  
+
+    navigate('/admin');
   };
 
   const handleChange = (e) => {
