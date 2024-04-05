@@ -1,0 +1,43 @@
+.button{
+  
+    border: 1px solid black;
+    border-color: black;
+    margin: 10px;
+    width: 100%;
+    margin-right: -10px;
+    
+    
+}
+
+
+
+.containernav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5%;
+    margin-top: 80px;
+
+    
+}
+
+body{
+    background-color: rgb(247, 247, 247);
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+}
+
+.padre{
+
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between
+}
+
+
+

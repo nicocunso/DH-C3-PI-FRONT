@@ -8,6 +8,10 @@ const Header = () => {
     const location = useLocation();
     const isAdminUrl = location.pathname.includes('admin');
 
+    function misReservas() {
+        window.location.href = '/misReservas'
+    };
+
     function cerrarSesion() {
         const redirect =
             isAdminUrl
@@ -30,6 +34,7 @@ const Header = () => {
                 { !user && !isAdminUrl && <Link to="/iniciarSesion"><button>Iniciar Sesión</button></Link> }
                 <div style={{ display:"flex" }}>
                     { user && <p>Bienvenido Usuario</p> }
+                    { user && <button onClick={() => misReservas()}>Mis Reservas</button> }
                     { user && <button onClick={() => cerrarSesion()}>Cerrar Sesion</button> }
                 </div>
             </div>

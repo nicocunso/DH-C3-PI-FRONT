@@ -12,6 +12,7 @@ import Bodito from './Components/Bodito/Bodito'
 import Autenticador from './Components/Autenticador/Autenticador';
 import AutosCategorias from './Components/Categorias/Autos/AutosCategorias';
 import Resultados from './Components/Resultados/Resultados';
+import MisReservas from './Pages/AgregarProductos/misReservas/MisReservas';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/inicio' element = {<Bodito/>}></Route>
         <Route path='/crearCuenta' element= {<CrearCuenta/>}></Route>
         <Route path='/iniciarSesion' element= {<IniciarSesion/>}></Route>
+        <Route path='/misReservas' element= {<MisReservas/>}></Route>
         <Route path='/admin/iniciarSesion' element= {<IniciarSesion/>}></Route>
         <Route path='/admin' element={
           <Autenticador>
