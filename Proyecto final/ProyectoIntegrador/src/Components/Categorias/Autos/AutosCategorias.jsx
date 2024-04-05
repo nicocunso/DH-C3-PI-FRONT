@@ -7,6 +7,7 @@ import Footer from '../../Footer/Footer';
 import { baseURL } from '../../../config/config';
 import Buscador from '../../Buscador/Buscador';
 import Resultados from '../../Resultados/Resultados';
+import Categorias from '../Categorias';
 
 const AutosCategorias = () => {
   const params = useParams();
@@ -59,7 +60,8 @@ const AutosCategorias = () => {
 
   return (
     <div>
-      <Buscador onBuscar={buscarAutosPorModelo} />
+      <Buscador />
+      <Categorias />
       <br />
       <h2 className={autosCategoriasStyles.h2}>Resultados</h2>
       <div className={autosCategoriasStyles.container}>

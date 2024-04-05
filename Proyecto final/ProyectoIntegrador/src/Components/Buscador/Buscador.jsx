@@ -23,9 +23,14 @@ const Buscador = () => {
         msgTypes.info
       );
       return;
+    } else if (!startDate || !endDate) {
+      window.alert('Por favor ingresar las fechas deseadas para la busqueda');
+      return;
     }
-    window.location.href = `/busqueda/${searchString}`;
-  };
+    const startDateFormatted = `${startDate.getFullYear()}-${("0" + (startDate.getMonth() + 1)).slice(-2)}-${("0" + startDate.getDate()).slice(-2)}`;
+    const endDateFormatted = `${endDate.getFullYear()}-${("0" + (endDate.getMonth() + 1)).slice(-2)}-${("0" + endDate.getDate()).slice(-2)}`;
+    window.location.href = `/busqueda/${searchString};${startDateFormatted};${endDateFormatted}`;
+  }
 
   const handleDateChange = (dates) => {
     const [start, end] = dates;

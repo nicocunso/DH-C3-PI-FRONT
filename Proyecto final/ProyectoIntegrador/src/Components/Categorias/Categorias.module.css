@@ -7,15 +7,12 @@
     color: rgba(3, 68, 94, 1);
     margin-left: 30px;
     text-align: left;
-    
 }
 
 .contenedor{
     display: flex;
-    margin-left: 15px;
     justify-content:space-around;
     flex-wrap: wrap;
-    gap: 15px;
 }
 
 .button{

@@ -6,7 +6,7 @@ import { baseURL } from '../../config/config';
 const AgregarProducto = () => {
   const navigate = useNavigate();
 
-  const [imagenes, setImagenes] = useState(undefined);
+  const [imagenes, setImagenes] = useState([]);
   const [vehiculo, setVehiculo] = useState({
     matricula: '',
     modelo: '',
@@ -23,41 +23,22 @@ const AgregarProducto = () => {
   });
 
   // Función para agregar imagenes
-  // async function agregarImagenes (e) {
-  //   let image = e.currentTarget.files[0];
-  //   const buffer = await image.arrayBuffer();
-  //   let byteArray = new Int8Array(buffer);
-  //   setImagenes(byteArray);
-    // const fileReader = new FileReader();
-    // const file = e.currentTarget.files[0];
-    // fileReader.readAsArrayBuffer(file);
-    // const fileByte = getAsByteArray(file);
-    // setImagenes(fileByte)
-    // const buffer = file.arrayBuffer();
-    // let byteArray = 
-    // fr.readAsArrayBuffer(file)
-    // fr.onload = function() {
-    //   // you can keep blob or save blob to another position
-    //   setImagenes(new Blob([fr.result]));
-
-    //   // url for download
-    //   // setImagenes(URL.createObjectURL(blob, {type: "image/png"}));
-    // }
-  // };
+  async function agregarImagenes (e) {
+    setImagenes(e.target.files);
+  };
 
   // Función para obtener los autos
-  const agregarVehiculo = (vehiculo) => {
-    // const formData = new FormData();
+  const agregarVehiculo = (vehiculo, imagenes) => {
+    const data = new FormData();
 
-    // formData.append('imageFiles', imagenes);
-    // formData.append('auto', vehiculo);
+    data.append('auto', JSON.stringify(vehiculo));
+    for (let imagen of imagenes) {
+      data.append('imageFiles', imagen);
+    }
 
     const options = {
       method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(vehiculo),
+      body: data
     };
 
     fetch(`${baseURL}/autos`, options);
@@ -66,10 +47,10 @@ const AgregarProducto = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Agrego vehiculo
-    agregarVehiculo(vehiculo);
+    agregarVehiculo(vehiculo, imagenes);
     console.log('Datos enviados:', vehiculo);
-    
-    navigate('/admin');  
+
+    navigate('/admin');
   };
 
   const handleChange = (e) => {
@@ -117,18 +98,18 @@ const AgregarProducto = () => {
           <label>Año de Fabricación:</label>
           <input type="text" name="anno" value={vehiculo.anno} onChange={handleChange} />
         </div>
-        {/* <br />
+        <br />
         <label for="imagenes">
-          Imagenes: */}
+          Imagenes:
           {/* <input type="text" name="imagenes" value={vehiculo.imagenes} onChange={handleChange} /> */}
-          {/* <input
+          <input
             type="file"
-            id="imagenes"
-            name="imagenes[]"
+            // id="imagenes"
+            // name="imagenes[]"
             accept="image/png, image/jpeg"
             multiple
             onChange={agregarImagenes}/>
-        </label> */}
+        </label>
         <br />
         <div>
           <label>Matrícula:</label>

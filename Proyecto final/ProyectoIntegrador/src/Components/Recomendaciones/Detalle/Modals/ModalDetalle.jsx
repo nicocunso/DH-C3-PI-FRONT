@@ -3,6 +3,8 @@ import styles from "./ModalDetalle.module.css";
 import { Calendar } from '@natscale/react-calendar';
 import { useParams } from 'react-router-dom';
 import { baseURL } from '../../../../config/config';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const ModalDetalle = ({open, close, reservasExistentes}) => {
     const [selectedDate, setSelectedDate] = useState([]);
@@ -34,7 +36,9 @@ const ModalDetalle = ({open, close, reservasExistentes}) => {
         const reserva = {
             fechaInicio: startDate,
             fechaDevolucion: finalDate,
-            idAuto: params.id
+            auto: {
+                id: params.id
+            }
         };
 
         const options = {
@@ -42,14 +46,36 @@ const ModalDetalle = ({open, close, reservasExistentes}) => {
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
-
             },
             body: JSON.stringify(reserva),
           };
 
           console.log(options);
       
-          fetch(`${baseURL}/reservas/registrar`, options);
+          fetch(`${baseURL}/reservas/registrar`, options)
+          .then(res => {
+            showSwal(res.status);
+          })
+          .catch(e => {
+            showSwal();
+          })
+    };
+
+    const showSwal = (status) => {
+        if (status === 200) {
+            withReactContent(Swal).fire({
+                title: 'Reserva completada con exito!',
+                icon: 'success',
+            })
+            .then(() => {
+                window.location.href= '/'
+            })
+        } else {
+            withReactContent(Swal).fire({
+                title: 'Hubo un error con la reserva',
+                icon: 'error',
+            })
+        }
     };
 
     if (!open) return null

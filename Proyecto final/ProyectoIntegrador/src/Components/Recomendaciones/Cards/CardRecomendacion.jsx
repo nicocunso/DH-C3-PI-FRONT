@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import cardRecomendacionesStyles from './CardRecomendacion.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import imagenes from '../../Imagenes.jsx/Imagenes';
 import { baseURL } from '../../../config/config';
 
@@ -44,7 +44,12 @@ export const CardRecomendacion = ({ recomendacion }) => {
       <div className={cardRecomendacionesStyles.container}>
         {/* <h2>{recomendacion.marca}</h2> */}
         <div className={cardRecomendacionesStyles.imageContainer}>
-          <img className={cardRecomendacionesStyles.img} src={imagenActual} alt="" style={{ marginLeft: '10px' }}/>
+          <FontAwesomeIcon
+            className={cardRecomendacionesStyles.arrowRight}
+            icon={faChevronLeft}
+            onClick={() => cambiarImagen(indiceImagen - 1)}
+          />
+          <img className={cardRecomendacionesStyles.img} src={imagenActual} alt=""/>
           <FontAwesomeIcon
             className={cardRecomendacionesStyles.arrowRight}
             icon={faChevronRight}
