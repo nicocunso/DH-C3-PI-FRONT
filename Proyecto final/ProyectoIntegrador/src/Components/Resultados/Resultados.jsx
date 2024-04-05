@@ -13,29 +13,49 @@ const Resultados = () => {
   const [mostrarDetalle, setMostrarDetalle] = useState(false);
   const [autos, setAutos] = useState([]);
   const params = useParams();
-  const modeloFiltrado = params && params.searchString ? params.searchString : "";
+  const searchString = params && params.searchString ? params.searchString.split(";") : "";
+  const modeloFiltrado = searchString ? searchString[0] : "";
+  const fechaInicio = searchString ? searchString[1] : "";
+  const fechaFin = searchString ? searchString[2] : "";
 
   useEffect(() => {
-    // Evitar la llamada a la API si el modelo filtrado está vacío
-    // if (!modeloFiltrado) {
-    //   setAutos([]);
-    //   return;
-    // }
-
     const obtenerAutosFiltrados = async () => {
       try {
-        const response = await fetch(`${baseURL}/autos`);
-        if (!response.ok) {
-          throw new Error('Error al obtener los datos de los autos');
-        }
-        const data = await response.json();
-        let autosFiltrados = data;
+        let autosFiltrados;
 
-        if (modeloFiltrado) {
+        if (modeloFiltrado && fechaInicio && fechaFin) {
+          const responseReservas = await fetch(`${baseURL}/reservas/${fechaInicio}/${fechaFin}`);
+          if (!responseReservas.ok) {
+            throw new Error('Error al obtener las reservas');
+          }
+
+          const dataReservas = await responseReservas.json();
+          let reservas = dataReservas;
+
+          const responseAutos = await fetch(`${baseURL}/autos`);
+          if (!responseAutos.ok) {
+            throw new Error('Error al obtener los autos');
+          }
+
+          const dataAutos = await responseAutos.json();
+          let autos = dataAutos;
+          console.log("autosFiltrados modelo filtrado antes de filtrar");
+          console.log(autos);
+
           // Filtrar autos por modelo si hay un modelo filtrado
-          autosFiltrados = data.filter(auto =>
-            auto.modelo.toLowerCase().includes(modeloFiltrado.toLowerCase())
+          autosFiltrados = autos.filter(auto =>
+            auto.modelo.toLowerCase().includes(modeloFiltrado.toLowerCase()) && 
+            reservas.every(reserva => auto.id != reserva)
           );
+        } else {
+          const response = await fetch(`${baseURL}/autos`);
+
+          if (!response.ok) {
+            throw new Error('Error al obtener los datos de los autos');
+          }
+
+          const data = await response.json();
+          autosFiltrados = data;
         }
 
         setAutos(autosFiltrados);
@@ -57,7 +77,6 @@ const Resultados = () => {
     <div>
       { modeloFiltrado && <Buscador/> }
       { modeloFiltrado && <Categorias/> }
-      { modeloFiltrado && <Recomendaciones/> }
       <br />
       <h2 className={resultadosStyles.h2}>{ modeloFiltrado ? modeloFiltrado : "Conocé nuestra flota" }</h2>
       <div className={resultadosStyles.container}>

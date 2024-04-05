@@ -59,7 +59,7 @@ const AutosCategorias = () => {
 
   return (
     <div>
-      <Buscador onBuscar={buscarAutosPorModelo} />
+      <Buscador />
       <br />
       <h2 className={autosCategoriasStyles.h2}>Resultados</h2>
       <div className={autosCategoriasStyles.container}>
